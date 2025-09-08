@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주식회사 일리아 (YLIA)</title>
+    <link rel="icon" type="image/png" href="image/ylia_favicon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom variables based on the globals.css */
+        :root {
+            --font-size: 16px;
+            --background: #ffffff;
+            --foreground: oklch(0.145 0 0);
+            --card: #ffffff;
+            --card-foreground: oklch(0.145 0 0);
+            --primary: #030213;
+            --primary-foreground: oklch(1 0 0);
+            --secondary: oklch(0.95 0.0058 264.53);
+            --secondary-foreground: #030213;
+            --muted: #ececf0;
+            --muted-foreground: #717182;
+            --accent: #e9ebef;
+            --accent-foreground: #030213;
+            --border: rgba(0, 0, 0, 0.1);
+            --radius: 0.625rem;
+        }
+
+        html {
+            font-size: var(--font-size);
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--foreground);
+        }
+
+        .bg-background { background-color: var(--background); }
+        .bg-card { background-color: var(--card); }
+        .bg-primary { background-color: var(--primary); }
+        .bg-primary-foreground { background-color: var(--primary-foreground); }
+        .bg-muted { background-color: var(--muted); }
+        .bg-accent { background-color: var(--accent); }
+        .text-foreground { color: var(--foreground); }
+        .text-primary { color: var(--primary); }
+        .text-primary-foreground { color: var(--primary-foreground); }
+        .text-muted-foreground { color: var(--muted-foreground); }
+        .text-accent-foreground { color: var(--accent-foreground); }
+        .border-border { border-color: var(--border); }
+
+        .rounded-lg { border-radius: var(--radius); }
+
+        /* Desktop navigation dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--card);
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+            z-index: 1;
+            border-radius: var(--radius);
+            padding: 1rem;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        /* Card styles */
+        .card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        /* Button styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: calc(var(--radius) - 2px);
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            padding: 0.5rem 1rem;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border);
+            background-color: transparent;
+            color: var(--foreground);
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: var(--accent-foreground);
+        }
+
+        /* Icons */
+        .icon {
+            width: 1rem;
+            height: 1rem;
+            display: inline-block;
+        }
+
+        .icon-lg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        /* Backdrop blur */
+        .backdrop-blur {
+            backdrop-filter: blur(8px);
+        }
+
+        /* Aspect ratio */
+        .aspect-video {
+            aspect-ratio: 16 / 9;
+        }
+
+        /* Line clamp */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Form styles */
+        .form-input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: calc(var(--radius) - 2px);
+            background-color: var(--background);
+            color: var(--foreground);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: calc(var(--radius) - 2px);
+            background-color: var(--background);
+            color: var(--foreground);
+            resize: vertical;
+        }
+
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Select styles */
+        .form-select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: calc(var(--radius) - 2px);
+            background-color: var(--background);
+            color: var(--foreground);
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23666" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 0.7rem center;
+            background-size: 0.65rem auto;
+            padding-right: 2rem;
+            cursor: pointer;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Loading animation */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+
+        /* Responsive utilities */
+        @media (max-width: 768px) {
+            .md\\:hidden { display: none !important; }
+            .hidden { display: none !important; }
+        }
+
+        @media (min-width: 768px) {
+            .md\\:flex { display: flex !important; }
+            .md\\:block { display: block !important; }
+            .md\\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+            .md\\:text-4xl { font-size: 2.25rem !important; }
+            .md\\:text-6xl { font-size: 3.75rem !important; }
+            .md\\:text-xl { font-size: 1.25rem !important; }
+        }
+
+        @media (min-width: 1024px) {
+            .lg\\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+            .lg\\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+            .lg\\:flex-row { flex-direction: row !important; }
+            .lg\\:w-1\\/2 { width: 50% !important; }
+            .lg\\:order-1 { order: 1 !important; }
+            .lg\\:order-2 { order: 2 !important; }
+        }
+
+        /* Additional utility classes */
+        .container { max-width: 1200px; margin: 0 auto; }
+        .sticky { position: sticky; }
+        .top-0 { top: 0; }
+        .z-50 { z-index: 50; }
+        .min-h-screen { min-height: 100vh; }
+        .min-h-80vh { min-height: 80vh; }
+        .h-16 { height: 4rem; }
+        .h-8 { height: 2rem; }
+        .w-8 { width: 2rem; }
+        .h-12 { height: 3rem; }
+        .w-12 { width: 3rem; }
+        .h-6 { height: 1.5rem; }
+        .w-6 { width: 1.5rem; }
+        .h-5 { height: 1.25rem; }
+        .w-5 { width: 1.25rem; }
+        .h-4 { height: 1rem; }
+        .w-4 { width: 1rem; }
+        .h-full { height: 100%; }
+        .w-full { width: 100%; }
+        .max-w-2xl { max-width: 42rem; }
+        .max-w-3xl { max-width: 48rem; }
+        .max-w-4xl { max-width: 56rem; }
+        .max-w-6xl { max-width: 72rem; }
+        .flex { display: flex; }
+        .grid { display: grid; }
+        .hidden { display: none; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .space-x-2 > * + * { margin-left: 0.5rem; }
+        .space-x-3 > * + * { margin-left: 0.75rem; }
+        .space-x-4 > * + * { margin-left: 1rem; }
+        .space-x-6 > * + * { margin-left: 1.5rem; }
+        .space-y-1 > * + * { margin-top: 0.25rem; }
+        .space-y-2 > * + * { margin-top: 0.5rem; }
+        .space-y-4 > * + * { margin-top: 1rem; }
+        .space-y-6 > * + * { margin-top: 1.5rem; }
+        .space-y-8 > * + * { margin-top: 2rem; }
+        .gap-4 { gap: 1rem; }
+        .gap-6 { gap: 1.5rem; }
+        .gap-8 { gap: 2rem; }
+        .gap-12 { gap: 3rem; }
+        .p-2 { padding: 0.5rem; }
+        .p-3 { padding: 0.75rem; }
+        .p-4 { padding: 1rem; }
+        .p-6 { padding: 1.5rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+        .pt-6 { padding-top: 1.5rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-12 { margin-bottom: 3rem; }
+        .mb-16 { margin-bottom: 4rem; }
+        .ml-2 { margin-left: 0.5rem; }
+        .mr-2 { margin-right: 0.5rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-auto { margin-top: auto; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .pl-4 { padding-left: 1rem; }
+        .text-center { text-align: center; }
+        .text-white { color: white; }
+        .text-sm { font-size: 0.875rem; }
+        .text-lg { font-size: 1.125rem; }
+        .text-xl { font-size: 1.25rem; }
+        .text-2xl { font-size: 1.5rem; }
+        .text-3xl { font-size: 1.875rem; }
+        .text-4xl { font-size: 2.25rem; }
+        .font-bold { font-weight: 700; }
+        .font-semibold { font-weight: 600; }
+        .font-medium { font-weight: 500; }
+        .leading-tight { line-height: 1.25; }
+        .leading-relaxed { line-height: 1.625; }
+        .leading-snug { line-height: 1.375; }
+        .leading-none { line-height: 1; }
+        .border { border-width: 1px; }
+        .border-b { border-bottom-width: 1px; }
+        .border-t { border-top-width: 1px; }
+        .rounded-sm { border-radius: 0.125rem; }
+        .rounded-md { border-radius: 0.375rem; }
+        .rounded-full { border-radius: 9999px; }
+        .overflow-hidden { overflow: hidden; }
+        .object-cover { object-fit: cover; }
+        .absolute { position: absolute; }
+        .relative { position: relative; }
+        .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+        .z-0 { z-index: 0; }
+        .z-10 { z-index: 10; }
+        .cursor-pointer { cursor: pointer; }
+        .transition-colors { transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out; }
+        .hover\\:bg-accent:hover { background-color: var(--accent); }
+        .hover\\:text-accent-foreground:hover { color: var(--accent-foreground); }
+        .hover\\:text-primary:hover { color: var(--primary); }
+        .hover\\:text-primary-foreground:hover { color: var(--primary-foreground); }
+        .focus\\:bg-accent:focus { background-color: var(--accent); }
+        .focus\\:text-accent-foreground:focus { color: var(--accent-foreground); }
+        .focus\\:outline-none:focus { outline: none; }
+        .select-none { user-select: none; }
+        .flex-col { flex-direction: column; }
+        .flex-grow { flex-grow: 1; }
+        .flex-shrink-0 { flex-shrink: 0; }
+        .w-1\\.5 { width: 0.375rem; }
+        .h-1\\.5 { height: 0.375rem; }
+        .w-max { width: max-content; }
+        .h-10 { height: 2.5rem; }
+        .bg-black\\/50 { background-color: rgba(0, 0, 0, 0.5); }
+        .bg-primary\\/10 { background-color: rgba(3, 2, 19, 0.1); }
+        .bg-muted\\/30 { background-color: rgba(236, 236, 240, 0.3); }
+        .bg-background\\/95 { background-color: rgba(255, 255, 255, 0.95); }
+        .text-primary-foreground\\/80 { color: rgba(255, 255, 255, 0.8); }
+        .text-primary-foreground\\/60 { color: rgba(255, 255, 255, 0.6); }
+        .bg-primary-foreground\\/20 { background-color: rgba(255, 255, 255, 0.2); }
+
+        .sm\\:flex { display: flex; }
+        .sm\\:w-auto { width: auto; }
+        .sm\\:hidden { display: none; }
+
+        @media (min-width: 640px) {
+            .sm\\:flex { display: flex !important; }
+            .sm\\:w-auto { width: auto !important; }
+            .sm\\:hidden { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="min-h-screen">
+        <!-- Header -->
+        <header class="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur">
+            <div class="container flex h-16 items-center justify-between px-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2 cursor-pointer" onclick="scrollToSection('hero')">
+                    <img src="image/ylia_logo.png" alt="YLIA Logo" class="h-8 w-auto object-contain">
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <button class="btn-outline cursor-pointer" onclick="scrollToSection('services')" id="nav-sipen">서비스</button>
+                    <button class="btn-outline cursor-pointer" onclick="scrollToSection('about')" id="nav-about">우리는</button>
+                    <button class="btn-outline cursor-pointer" onclick="scrollToSection('contact')" id="nav-contact">문의</button>
+                </nav>
+
+                <!-- Language Toggle & Mobile Menu -->
+                <div class="flex items-center space-x-4">
+                    <select id="language-select" class="form-select hidden sm:block" onchange="changeLanguage(this.value)">
+                        <option value="ko">한국어</option>
+                        <option value="en">English</option>
+                        <option value="zh">中文</option>
+                        <option value="ja">日本語</option>
+                    </select>
+
+                    <!-- Mobile menu button -->
+                    <button class="btn-outline md:hidden" onclick="toggleMobileMenu()">
+                        <svg class="icon transition-transform" id="mobile-menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="mobile-menu border-t bg-background p-4 md:hidden">
+                <nav class="space-y-2">
+                    <div class="text-sm cursor-pointer hover:text-primary" onclick="scrollToSection('services')" id="mobile-nav-services">서비스</div>
+                    <div class="text-sm cursor-pointer hover:text-primary" onclick="scrollToSection('about')" id="mobile-nav-about">우리는</div>
+                    <div class="text-sm cursor-pointer hover:text-primary" onclick="scrollToSection('contact')" id="mobile-nav-contact">문의</div>
+                    <select id="mobile-language-select" class="form-select w-full sm:hidden" onchange="changeLanguage(this.value)">
+                        <option value="ko">한국어</option>
+                        <option value="en">English</option>
+                        <option value="zh">中文</option>
+                        <option value="ja">日本語</option>
+                    </select>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero Section -->
+            <section id="hero" class="relative min-h-80vh flex items-center justify-center overflow-hidden">
+                <!-- Background Image -->
+                <div class="absolute inset-0 z-0">
+                    <img src="https://images.unsplash.com/photo-1624213011686-bc14dfc81650?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjBidWlsZGluZyUyMGNvcnBvcmF0ZXxlbnwxfHx8fDE3NTY5MTY3MTJ8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Modern office building" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/50"></div>
+                </div>
+
+                <!-- Content -->
+                <div class="relative z-10 container px-4 text-center text-white">
+                    <div class="max-w-4xl mx-auto space-y-6">
+                        <h1 class="text-4xl md:text-6xl font-bold leading-tight" id="hero-title">
+                            혁신으로 미래를 만들어가는<br>주식회사 일리아
+                        </h1>
+                        <p class="text-lg md:text-xl max-w-2xl mx-auto leading-relaxed" id="hero-subtitle">
+                            우리는 최첨단 기술과 창의적 사고를 바탕으로 고객의 성공을 위한 최고의 서비스를 제공합니다.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services" class="py-16 bg-muted/30">
+                <div class="container px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4" id="services-title">우리의 서비스</h2>
+                        <p class="text-lg text-muted-foreground max-w-2xl mx-auto" id="services-subtitle">고객의 성공을 위한 혁신적인 솔루션을 제공합니다</p>
+                    </div>
+
+                    <div class="space-y-8 max-w-6xl mx-auto">
+                        <!-- 시픈 서비스 -->
+                        <div class="card overflow-hidden">
+                            <div class="flex flex-col lg:flex-row">
+                                <div class="lg:w-1/2">
+                                    <div class="aspect-video relative">
+                                        <img src="https://images.unsplash.com/photo-1709715357520-5e1047a2b691?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHRlYW0lMjBtZWV0aW5nfGVufDF8fHx8MTc1Njk4OTc3Mnww&ixlib=rb-4.1.0&q=80&w=1080" alt="Business team meeting" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="lg:w-1/2 flex flex-col">
+                                    <div class="p-6 flex-shrink-0">
+                                        <div class="flex items-center space-x-3 mb-4">
+                                            <div class="p-2 bg-primary/10 rounded-lg">
+                                                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                                </svg>
+                                            </div>
+                                            <h3 class="font-semibold text-xl" id="sipen-title">시픈</h3>
+                                        </div>
+                                        <p class="text-muted-foreground mb-4" id="sipen-description">공급사 검색 서비스 플랫폼</p>
+                                    </div>
+                                    <div class="px-6 pb-6 flex-grow flex flex-col">
+                                        <ul class="space-y-2 text-sm text-muted-foreground mb-6 flex-grow" id="sipen-features">
+                                            <li class="flex items-center space-x-2">
+                                                <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                                <span>체계적인 공급사 데이터베이스</span>
+                                            </li>
+                                            <li class="flex items-center space-x-2">
+                                                <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                                <span>실시간 검색 및 매칭</span>
+                                            </li>
+                                            <li class="flex items-center space-x-2">
+                                                <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                                <span>신뢰성 평가 시스템</span>
+                                            </li>
+                                            <li class="flex items-center space-x-2">
+                                                <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                                <span>효율적인 업체 선정 지원</span>
+                                            </li>
+                                        </ul>
+                                        <div class="mt-auto">
+                                            <button class="btn-primary w-full sm:w-auto flex items-center" onclick="window.open('https://www.seepn.me', '_blank')">
+                                                <span id="sipen-button">서비스 바로가기</span>
+                                                <svg class="icon ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 교육 서비스 -->
+                        <div class="card overflow-hidden">
+                            <div class="flex flex-col lg:flex-row">
+                                <div class="lg:w-1/2 lg:order-2">
+                                    <div class="aspect-video relative">
+                                        <img src="https://images.unsplash.com/photo-1645363308298-3a949c8bfd86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlZHVjYXRpb24lMjB0ZWNobm9sb2d5JTIwbGVhcm5pbmd8ZW58MXx8fHwxNzU2OTY3NzEzfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Education technology" class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                                <div class="lg:w-1/2 lg:order-1 flex flex-col">
+                                    <div class="p-6 flex-shrink-0">
+                                        <div class="flex items-center space-x-3 mb-4">
+                                            <div class="p-2 bg-primary/10 rounded-lg">
+                                                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                                                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                                                </svg>
+                                            </div>
+                                            <h3 class="font-semibold text-xl" id="education-title">교육</h3>
+                                        </div>
+                                        <p class="text-muted-foreground mb-4" id="education-description">민간자격, 창업/기업가정신, 실무 중심 교육</p>
+                                    </div>
+                                    <div class="px-6 pb-6 flex-grow flex flex-col">
+                                        <ul class="space-y-2 text-sm text-muted-foreground mb-6 flex-grow" id="education-features">
+                                            <li class="flex items-center space-x-2">
+                                                <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                                <span>민간자격 취득 과정</span>
+                                            </li>
+                                            <li class="flex items-center space-x-2">
+                                                <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                                <span>창업 및 기업가정신 교육</span>
+                                            </li>
+                                            <li class="flex items-center space-x-2">
+                                                <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                                <span>실무 중심 커리큘럼</span>
+                                            </li>
+                                            <li class="flex items-center space-x-2">
+                                                <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                                                <span>전문가 멘토링</span>
+                                            </li>
+                                        </ul>
+                                        <div class="mt-auto">
+                                            <button class="btn-primary w-full sm:w-auto flex items-center" onclick="window.open('https://www.truthnme.com', '_blank')">
+                                                <span id="education-button">서비스 바로가기</span>
+                                                <svg class="icon ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section id="about" class="py-16">
+                <div class="container px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4" id="about-title">우리는</h2>
+                        <p class="text-lg text-muted-foreground max-w-3xl mx-auto" id="about-subtitle">혁신과 협력을 통해 더 나은 미래를 만들어가는 기업입니다</p>
+                    </div>
+
+                    <div class="max-w-4xl mx-auto mb-16">
+                        <div class="text-center">
+                            <p class="text-muted-foreground leading-relaxed" id="about-description">
+                                주식회사 일리아는 2025년 설립된 혁신적인 기술 기업으로, 고객의 성공을 위한 최고의 서비스를 제공하고 있습니다. 우리는 끊임없는 연구개발과 창의적 사고를 바탕으로 시장을 선도하는 솔루션을 개발하며, 고객과 함께 성장하는 파트너가 되고자 합니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Value 1: Innovation -->
+                        <div class="card text-center p-6">
+                            <div class="space-y-4">
+                                <div class="mx-auto w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <circle cx="12" cy="12" r="6"></circle>
+                                        <circle cx="12" cy="12" r="2"></circle>
+                                    </svg>
+                                </div>
+                                <h3 class="font-semibold" id="value-innovation-title">혁신</h3>
+                                <p class="text-sm text-muted-foreground leading-relaxed" id="value-innovation-desc">
+                                    끊임없는 연구개발을 통해 혁신적인 솔루션을 제공합니다.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Value 2: Collaboration -->
+                        <div class="card text-center p-6">
+                            <div class="space-y-4">
+                                <div class="mx-auto w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="9" cy="7" r="4"></circle>
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="font-semibold" id="value-collaboration-title">협력</h3>
+                                <p class="text-sm text-muted-foreground leading-relaxed" id="value-collaboration-desc">
+                                    고객과의 긴밀한 협력을 통해 함께 성장합니다.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Value 3: Excellence -->
+                        <div class="card text-center p-6">
+                            <div class="space-y-4">
+                                <div class="mx-auto w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                        <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1m15.5-6.5L17 7l-1.5-1.5M7 17l-1.5 1.5M17 17l1.5 1.5M7 7L5.5 5.5"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="font-semibold" id="value-excellence-title">우수성</h3>
+                                <p class="text-sm text-muted-foreground leading-relaxed" id="value-excellence-desc">
+                                    최고 품질의 서비스로 고객 만족을 실현합니다.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Value 4: Trust -->
+                        <div class="card text-center p-6">
+                            <div class="space-y-4">
+                                <div class="mx-auto w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="font-semibold" id="value-trust-title">신뢰</h3>
+                                <p class="text-sm text-muted-foreground leading-relaxed" id="value-trust-desc">
+                                    투명하고 신뢰할 수 있는 비즈니스를 추구합니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="py-16 bg-muted/30">
+                <div class="container px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4" id="contact-title">문의</h2>
+                        <p class="text-lg text-muted-foreground max-w-2xl mx-auto" id="contact-subtitle">궁금한 점이 있으시면 언제든 연락주세요. 빠른 시간 내에 답변드리겠습니다.</p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                        <!-- 연락처 정보 -->
+                        <div class="space-y-8">
+                            <div>
+                                <h3 class="font-semibold mb-6" id="contact-info-title">연락처 정보</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="p-2 bg-primary/10 rounded-lg">
+                                            <svg class="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                                <polyline points="22,6 12,13 2,6"></polyline>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium" id="contact-email-label">이메일</p>
+                                            <p class="text-muted-foreground">jhc@ylia.io</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <div class="p-2 bg-primary/10 rounded-lg">
+                                            <svg class="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium" id="contact-phone-label">전화번호</p>
+                                            <p class="text-muted-foreground">+82-10-9025-5093</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <div class="p-2 bg-primary/10 rounded-lg">
+                                            <svg class="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                <circle cx="12" cy="10" r="3"></circle>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-medium" id="contact-address-label">주소</p>
+                                            <p class="text-muted-foreground" id="contact-address-value">서울시 마포구 신수로 82</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="font-medium mb-4" id="contact-hours-title">운영 시간</h4>
+                                <div class="space-y-2 text-sm text-muted-foreground">
+                                    <p id="contact-hours-weekdays">평일: 09:00 - 18:00</p>
+                                    <p id="contact-hours-weekend">주말: 휴무</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 문의 양식 -->
+                        <div class="card">
+                            <div class="p-6 border-b">
+                                <h3 class="font-semibold text-xl" id="contact-form-title">문의하기</h3>
+                            </div>
+                            <div class="p-6">
+                                <form id="contact-form" class="space-y-4">
+                                    <div class="grid md:grid-cols-2 gap-4">
+                                        <div class="space-y-2">
+                                            <label for="name" class="font-medium text-sm" id="contact-form-name-label">이름</label>
+                                            <input type="text" id="name" name="name" class="form-input" placeholder="이름">
+                                        </div>
+                                        <div class="space-y-2">
+                                            <label for="email" class="font-medium text-sm" id="contact-form-email-label">이메일</label>
+                                            <input type="email" id="email" name="email" class="form-input" placeholder="이메일">
+                                        </div>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label for="phone" class="font-medium text-sm" id="contact-form-phone-label">연락처</label>
+                                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="+82-10-1234-5678">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label for="company" class="font-medium text-sm" id="contact-form-company-label">회사명</label>
+                                        <input type="text" id="company" name="company" class="form-input" placeholder="회사명">
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label for="message" class="font-medium text-sm" id="contact-form-message-label">문의 내용</label>
+                                        <textarea id="message" name="message" rows="5" class="form-textarea" placeholder="문의 내용"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn-primary w-full flex items-center justify-center">
+                                        <svg class="icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                                            <polygon points="22,2 15,22 11,13 2,9 22,2"></polygon>
+                                        </svg>
+                                        <span id="contact-form-submit">문의 보내기</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-primary text-primary-foreground">
+            <div class="container px-4 py-12">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- 회사 정보 -->
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-2">
+                            <img src="image/ylia_logo.png" alt="YLIA Logo" class="h-8 w-auto object-contain brightness-0 invert opacity-60">
+                        </div>
+                        <p class="text-primary-foreground/80 leading-relaxed" id="footer-description">
+                            혁신과 협력을 통해 더 나은 미래를 만들어가는 주식회사 일리아입니다.
+                        </p>
+                    </div>
+
+                    <!-- 서비스 링크 -->
+                    <div class="space-y-4">
+                        <h3 class="font-semibold" id="footer-services-title">서비스</h3>
+                        <ul class="space-y-2 text-sm text-primary-foreground/80">
+                            <li><a href="https://www.seepn.me" target="_blank" class="hover:text-primary-foreground transition-colors" id="footer-services-sipen">시픈</a></li>
+                            <li><a href="https://www.truthnme.com" target="_blank" class="hover:text-primary-foreground transition-colors" id="footer-services-education">교육</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- 연락처 -->
+                    <div class="space-y-4">
+                        <h3 class="font-semibold" id="footer-contact-title">연락처</h3>
+                        <div class="space-y-2 text-sm text-primary-foreground/80">
+                            <p>jhc@ylia.io</p>
+                            <p>+82-10-9025-5093</p>
+                            <p id="footer-contact-address">서울시 마포구 신수로 82</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="border-top: 1px solid rgba(255, 255, 255, 0.2); margin: 2rem 0;"></div>
+
+                <div class="text-center text-sm text-primary-foreground/60">
+                    <p>&copy; 2025 YLIA. <span id="footer-copyright">All rights reserved.</span></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Content object with Korean and English translations
+        const content = {
+            ko: {
+                nav: {
+                    services: '서비스',
+                    sipen: '시픈',
+                    sipenDesc: '혁신적인 비즈니스 솔루션',
+                    education: '교육',
+                    educationDesc: '전문 교육 서비스',
+                    about: '우리는',
+                    contact: '문의',
+                },
+                hero: {
+                    title: '혁신으로 미래를 만들어가는<br>주식회사 일리아',
+                    subtitle: '우리는 최첨단 기술과 창의적 사고를 바탕으로 고객의 성공을 위한 최고의 서비스를 제공합니다.',
+                },
+                services: {
+                    title: '우리의 서비스',
+                    subtitle: '고객의 성공을 위한 혁신적인 솔루션을 제공합니다',
+                    sipen: {
+                        title: '시픈',
+                        description: '공급사 검색 서비스 플랫폼',
+                        features: [
+                            '체계적인 공급사 데이터베이스',
+                            '실시간 검색 및 매칭',
+                            '신뢰성 평가 시스템',
+                            '효율적인 업체 선정 지원',
+                        ],
+                        button: '서비스 바로가기',
+                    },
+                    education: {
+                        title: '교육',
+                        description: '민간자격, 창업/기업가정신, 실무 중심 교육',
+                        features: [
+                            '민간자격 취득 과정',
+                            '창업 및 기업가정신 교육',
+                            '실무 중심 커리큘럼',
+                            '전문가 멘토링',
+                        ],
+                        button: '서비스 바로가기',
+                    },
+                },
+                about: {
+                    title: '우리는',
+                    subtitle: '혁신과 협력을 통해 더 나은 미래를 만들어가는 기업입니다',
+                    description: '주식회사 일리아는 2025년 설립된 혁신적인 기술 기업으로, 고객의 성공을 위한 최고의 서비스를 제공하고 있습니다. 우리는 끊임없는 연구개발과 창의적 사고를 바탕으로 시장을 선도하는 솔루션을 개발하며, 고객과 함께 성장하는 파트너가 되고자 합니다.',
+                    values: {
+                        innovation: {
+                            title: '혁신',
+                            description: '끊임없는 연구개발을 통해 혁신적인 솔루션을 제공합니다.',
+                        },
+                        collaboration: {
+                            title: '협력',
+                            description: '고객과의 긴밀한 협력을 통해 함께 성장합니다.',
+                        },
+                        excellence: {
+                            title: '우수성',
+                            description: '최고 품질의 서비스로 고객 만족을 실현합니다.',
+                        },
+                        trust: {
+                            title: '신뢰',
+                            description: '투명하고 신뢰할 수 있는 비즈니스를 추구합니다.',
+                        },
+                    },
+                },
+                contact: {
+                    title: '문의',
+                    subtitle: '궁금한 점이 있으시면 언제든 연락주세요. 빠른 시간 내에 답변드리겠습니다.',
+                    info: {
+                        title: '연락처 정보',
+                        email: { label: '이메일' },
+                        phone: { label: '전화번호' },
+                        address: { label: '주소', value: '서울시 마포구 신수로 82' },
+                        hours: {
+                            title: '운영 시간',
+                            weekdays: '평일: 09:00 - 18:00',
+                            weekend: '주말: 휴무',
+                        },
+                    },
+                    form: {
+                        title: '문의하기',
+                        name: '이름',
+                        email: '이메일',
+                        phone: '연락처',
+                        company: '회사명',
+                        message: '문의 내용',
+                        submit: '문의 보내기',
+                        successMessage: '문의가 성공적으로 전송되었습니다. 빠른 시간 내에 답변드리겠습니다.',
+                        placeholders: {
+                            name: '이름',
+                            email: '이메일',
+                            phone: '010-1234-5678',
+                            company: '회사명',
+                            message: '문의 내용을 입력해주세요'
+                        }
+                    },
+                },
+                footer: {
+                    description: '혁신과 협력을 통해 더 나은 미래를 만들어가는 주식회사 일리아입니다.',
+                    services: { title: '서비스', sipen: '시픈', education: '교육' },
+                    contact: { title: '연락처', address: '서울시 마포구 신수로 82' },
+                    copyright: '모든 권리 보유.',
+                    privacy: '개인정보처리방침',
+                    terms: '이용약관',
+                },
+            },
+            en: {
+                nav: {
+                    services: 'Services',
+                    sipen: 'Sipen',
+                    sipenDesc: 'Innovative business solutions',
+                    education: 'Education',
+                    educationDesc: 'Professional education services',
+                    about: 'About Us',
+                    contact: 'Contact',
+                },
+                hero: {
+                    title: 'Creating the Future<br>with Innovation<br>YLIA Corporation',
+                    subtitle: 'We provide the best services for our customers\' success based on cutting-edge technology and creative thinking.',
+                },
+                services: {
+                    title: 'Our Services',
+                    subtitle: 'We provide innovative solutions for our customers\' success',
+                    sipen: {
+                        title: 'Sipen',
+                        description: 'Supplier search service platform',
+                        features: [
+                            'Systematic supplier database',
+                            'Real-time search and matching',
+                            'Reliability evaluation system',
+                            'Efficient vendor selection support',
+                        ],
+                        button: 'Visit Service',
+                    },
+                    education: {
+                        title: 'Education',
+                        description: 'Private certification, entrepreneurship, and practice-oriented education',
+                        features: [
+                            'Private certification courses',
+                            'Entrepreneurship education',
+                            'Practice-oriented curriculum',
+                            'Expert mentoring',
+                        ],
+                        button: 'Visit Service',
+                    },
+                },
+                about: {
+                    title: 'About Us',
+                    subtitle: 'We are a company that creates a better future through innovation and collaboration',
+                    description: 'YLIA Corporation is an innovative technology company established in 2025, providing the best services for customer success. We develop market-leading solutions based on continuous R&D and creative thinking, and aim to be a partner that grows together with our customers.',
+                    values: {
+                        innovation: {
+                            title: 'Innovation',
+                            description: 'We provide innovative solutions through continuous R&D.',
+                        },
+                        collaboration: {
+                            title: 'Collaboration',
+                            description: 'We grow together through close collaboration with customers.',
+                        },
+                        excellence: {
+                            title: 'Excellence',
+                            description: 'We realize customer satisfaction with the highest quality services.',
+                        },
+                        trust: {
+                            title: 'Trust',
+                            description: 'We pursue transparent and trustworthy business.',
+                        },
+                    },
+                },
+                contact: {
+                    title: 'Contact',
+                    subtitle: 'If you have any questions, please contact us anytime. We will respond promptly.',
+                    info: {
+                        title: 'Contact Information',
+                        email: { label: 'Email' },
+                        phone: { label: 'Phone' },
+                        address: { label: 'Address', value: '82 Sinsu-ro, Mapo-gu, Seoul, South Korea' },
+                        hours: {
+                            title: 'Business Hours',
+                            weekdays: 'Weekdays: 09:00 - 18:00',
+                            weekend: 'Weekend: Closed',
+                        },
+                    },
+                    form: {
+                        title: 'Send Inquiry',
+                        name: 'Name',
+                        email: 'Email',
+                        phone: 'Phone',
+                        company: 'Company',
+                        message: 'Message',
+                        submit: 'Send Inquiry',
+                        successMessage: 'Your inquiry has been sent successfully. We will respond promptly.',
+                        placeholders: {
+                            name: 'Name',
+                            email: 'Email',
+                            phone: '010-1234-5678',
+                            company: 'Company',
+                            message: 'Please enter your inquiry'
+                        }
+                    },
+                },
+                footer: {
+                    description: 'YLIA Corporation creates a better future through innovation and collaboration.',
+                    services: { title: 'Services', sipen: 'Sipen', education: 'Education' },
+                    contact: { title: 'Contact', address: '82 Sinsu-ro, Mapo-gu, Seoul, South Korea' },
+                    copyright: 'All rights reserved.',
+                    privacy: 'Privacy Policy',
+                    terms: 'Terms of Service',
+                },
+            },
+            zh: {
+                nav: {
+                    services: '服务',
+                    sipen: '西本',
+                    sipenDesc: '创新商业解决方案',
+                    education: '教育',
+                    educationDesc: '专业教育服务',
+                    about: '关于我们',
+                    contact: '联系我们',
+                },
+                hero: {
+                    title: '以创新创造未来<br>YLIA株式会社',
+                    subtitle: '我们基于尖端技术和创造性思维为客户的成功提供最佳服务。',
+                },
+                services: {
+                    title: '我们的服务',
+                    subtitle: '我们为客户的成功提供创新解决方案',
+                    sipen: {
+                        title: '西本',
+                        description: '供应商搜索服务平台',
+                        features: [
+                            '系统化供应商数据库',
+                            '实时搜索和匹配',
+                            '可靠性评估系统',
+                            '高效的供应商选择支持',
+                        ],
+                        button: '访问服务',
+                    },
+                    education: {
+                        title: '教育',
+                        description: '民间资格、创业/企业家精神、实践导向教育',
+                        features: [
+                            '民间资格获得课程',
+                            '创业和企业家精神教育',
+                            '实践导向课程',
+                            '专家指导',
+                        ],
+                        button: '访问服务',
+                    },
+                },
+                about: {
+                    title: '关于我们',
+                    subtitle: '我们是一家通过创新和合作创造更美好未来的公司',
+                    description: 'YLIA株式会社成立于2025年，是一家创新技术公司，为客户的成功提供最佳服务。我们基于持续的研发和创造性思维开发市场领先的解决方案，旨在成为与客户共同成长的合作伙伴。',
+                    values: {
+                        innovation: {
+                            title: '创新',
+                            description: '通过持续的研发提供创新解决方案。',
+                        },
+                        collaboration: {
+                            title: '合作',
+                            description: '通过与客户的密切合作共同成长。',
+                        },
+                        excellence: {
+                            title: '卓越',
+                            description: '以最高质量的服务实现客户满意。',
+                        },
+                        trust: {
+                            title: '信任',
+                            description: '追求透明和可信赖的业务。',
+                        },
+                    },
+                },
+                contact: {
+                    title: '联系我们',
+                    subtitle: '如有任何疑问，请随时联系我们。我们将及时回复。',
+                    info: {
+                        title: '联系信息',
+                        email: { label: '电子邮件' },
+                        phone: { label: '电话号码' },
+                        address: { label: '地址', value: '首尔市麻浦区新水路82号' },
+                        hours: {
+                            title: '营业时间',
+                            weekdays: '工作日：09:00 - 18:00',
+                            weekend: '周末：休息',
+                        },
+                    },
+                    form: {
+                        title: '发送咨询',
+                        name: '姓名',
+                        email: '电子邮件',
+                        phone: '电话',
+                        company: '公司',
+                        message: '消息',
+                        submit: '发送咨询',
+                        successMessage: '您的咨询已成功发送。我们将及时回复。',
+                        placeholders: {
+                            name: '姓名',
+                            email: '电子邮件',
+                            phone: '010-1234-5678',
+                            company: '公司',
+                            message: '请输入您的咨询内容'
+                        }
+                    },
+                },
+                footer: {
+                    description: 'YLIA株式会社通过创新和合作创造更美好的未来。',
+                    services: { title: '服务', sipen: '西本', education: '教育' },
+                    contact: { title: '联系', address: '首尔市麻浦区新水路82号' },
+                    copyright: '版权所有。',
+                    privacy: '隐私政策',
+                    terms: '服务条款',
+                },
+            },
+            ja: {
+                nav: {
+                    services: 'サービス',
+                    sipen: 'シペン',
+                    sipenDesc: '革新的なビジネスソリューション',
+                    education: '教育',
+                    educationDesc: '専門教育サービス',
+                    about: '私たちについて',
+                    contact: 'お問い合わせ',
+                },
+                hero: {
+                    title: '革新で未来を創造する<br>YLIA株式会社',
+                    subtitle: '私たちは最先端技術と創造的思考に基づいて、お客様の成功のための最高のサービスを提供します。',
+                },
+                services: {
+                    title: '私たちのサービス',
+                    subtitle: 'お客様の成功のための革新的なソリューションを提供します',
+                    sipen: {
+                        title: 'シペン',
+                        description: 'サプライヤー検索サービスプラットフォーム',
+                        features: [
+                            '体系的なサプライヤーデータベース',
+                            'リアルタイム検索とマッチング',
+                            '信頼性評価システム',
+                            '効率的な業者選定支援',
+                        ],
+                        button: 'サービスへ',
+                    },
+                    education: {
+                        title: '教育',
+                        description: '民間資格、起業/起業家精神、実務中心教育',
+                        features: [
+                            '民間資格取得過程',
+                            '起業および起業家精神教育',
+                            '実務中心カリキュラム',
+                            '専門家メンタリング',
+                        ],
+                        button: 'サービスへ',
+                    },
+                },
+                about: {
+                    title: '私たちについて',
+                    subtitle: '私たちは革新と協力を通じてより良い未来を創造する企業です',
+                    description: 'YLIA株式会社は2025年に設立された革新的な技術企業で、お客様の成功のための最高のサービスを提供しています。私たちは継続的な研究開発と創造的思考に基づいて市場をリードするソリューションを開発し、お客様と共に成長するパートナーになることを目指しています。',
+                    values: {
+                        innovation: {
+                            title: '革新',
+                            description: '継続的な研究開発を通じて革新的なソリューションを提供します。',
+                        },
+                        collaboration: {
+                            title: '協力',
+                            description: 'お客様との緊密な協力を通じて共に成長します。',
+                        },
+                        excellence: {
+                            title: '卓越性',
+                            description: '最高品質のサービスでお客様満足を実現します。',
+                        },
+                        trust: {
+                            title: '信頼',
+                            description: '透明で信頼できるビジネスを追求します。',
+                        },
+                    },
+                },
+                contact: {
+                    title: 'お問い合わせ',
+                    subtitle: 'ご質問がございましたら、いつでもお気軽にお問い合わせください。迅速にお答えいたします。',
+                    info: {
+                        title: '連絡先情報',
+                        email: { label: 'メール' },
+                        phone: { label: '電話番号' },
+                        address: { label: '住所', value: 'ソウル市麻浦区新水路82' },
+                        hours: {
+                            title: '営業時間',
+                            weekdays: '平日：09:00 - 18:00',
+                            weekend: '週末：休業',
+                        },
+                    },
+                    form: {
+                        title: 'お問い合わせ送信',
+                        name: 'お名前',
+                        email: 'メール',
+                        phone: '電話',
+                        company: '会社名',
+                        message: 'メッセージ',
+                        submit: 'お問い合わせ送信',
+                        successMessage: 'お問い合わせが正常に送信されました。迅速にお答えいたします。',
+                        placeholders: {
+                            name: 'お名前',
+                            email: 'メール',
+                            phone: '010-1234-5678',
+                            company: '会社名',
+                            message: 'お問い合わせ内容を入力してください'
+                        }
+                    },
+                },
+                footer: {
+                    description: 'YLIA株式会社は革新と協力を通じてより良い未来を創造します。',
+                    services: { title: 'サービス', sipen: 'シペン', education: '教育' },
+                    contact: { title: '連絡先', address: 'ソウル市麻浦区新水路82' },
+                    copyright: '全著作権所有。',
+                    privacy: 'プライバシーポリシー',
+                    terms: '利用規約',
+                },
+            },
+        };
+
+        // Current language state
+        let currentLanguage = 'ko';
+
+        // Function to scroll to section
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        }
+
+        // Function to toggle mobile menu
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            
+            if (mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                mobileMenu.classList.add('active');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Function to change language
+        function changeLanguage(language) {
+            currentLanguage = language;
+            updateContent();
+        }
+
+        // Function to update content based on current language
+        function updateContent() {
+            const contentData = content[currentLanguage];
+            
+            // Update language select elements
+            document.getElementById('language-select').value = currentLanguage;
+            document.getElementById('mobile-language-select').value = currentLanguage;
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = currentLanguage;
+
+            // Update navigation
+            document.getElementById('nav-sipen').textContent = contentData.nav.services;
+            document.getElementById('nav-about').textContent = contentData.nav.about;
+            document.getElementById('nav-contact').textContent = contentData.nav.contact;
+
+            // Update mobile navigation
+            document.getElementById('mobile-nav-services').textContent = contentData.nav.services;
+            document.getElementById('mobile-nav-about').textContent = contentData.nav.about;
+            document.getElementById('mobile-nav-contact').textContent = contentData.nav.contact;
+
+            // Update hero section
+            document.getElementById('hero-title').innerHTML = contentData.hero.title;
+            document.getElementById('hero-subtitle').textContent = contentData.hero.subtitle;
+
+            // Update services section
+            document.getElementById('services-title').textContent = contentData.services.title;
+            document.getElementById('services-subtitle').textContent = contentData.services.subtitle;
+            document.getElementById('sipen-title').textContent = contentData.services.sipen.title;
+            document.getElementById('sipen-description').textContent = contentData.services.sipen.description;
+            document.getElementById('sipen-button').textContent = contentData.services.sipen.button;
+            document.getElementById('education-title').textContent = contentData.services.education.title;
+            document.getElementById('education-description').textContent = contentData.services.education.description;
+            document.getElementById('education-button').textContent = contentData.services.education.button;
+
+            // Update sipen features
+            const sipenFeatures = document.getElementById('sipen-features');
+            sipenFeatures.innerHTML = contentData.services.sipen.features.map(feature => 
+                `<li class="flex items-center space-x-2">
+                    <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                    <span>${feature}</span>
+                </li>`
+            ).join('');
+
+            // Update education features
+            const educationFeatures = document.getElementById('education-features');
+            educationFeatures.innerHTML = contentData.services.education.features.map(feature => 
+                `<li class="flex items-center space-x-2">
+                    <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                    <span>${feature}</span>
+                </li>`
+            ).join('');
+
+            // Update about section
+            document.getElementById('about-title').textContent = contentData.about.title;
+            document.getElementById('about-subtitle').textContent = contentData.about.subtitle;
+            document.getElementById('about-description').textContent = contentData.about.description;
+            document.getElementById('value-innovation-title').textContent = contentData.about.values.innovation.title;
+            document.getElementById('value-innovation-desc').textContent = contentData.about.values.innovation.description;
+            document.getElementById('value-collaboration-title').textContent = contentData.about.values.collaboration.title;
+            document.getElementById('value-collaboration-desc').textContent = contentData.about.values.collaboration.description;
+            document.getElementById('value-excellence-title').textContent = contentData.about.values.excellence.title;
+            document.getElementById('value-excellence-desc').textContent = contentData.about.values.excellence.description;
+            document.getElementById('value-trust-title').textContent = contentData.about.values.trust.title;
+            document.getElementById('value-trust-desc').textContent = contentData.about.values.trust.description;
+
+            // Update contact section
+            document.getElementById('contact-title').textContent = contentData.contact.title;
+            document.getElementById('contact-subtitle').textContent = contentData.contact.subtitle;
+            document.getElementById('contact-info-title').textContent = contentData.contact.info.title;
+            document.getElementById('contact-email-label').textContent = contentData.contact.info.email.label;
+            document.getElementById('contact-phone-label').textContent = contentData.contact.info.phone.label;
+            document.getElementById('contact-address-label').textContent = contentData.contact.info.address.label;
+            document.getElementById('contact-address-value').textContent = contentData.contact.info.address.value;
+            document.getElementById('contact-hours-title').textContent = contentData.contact.info.hours.title;
+            document.getElementById('contact-hours-weekdays').textContent = contentData.contact.info.hours.weekdays;
+            document.getElementById('contact-hours-weekend').textContent = contentData.contact.info.hours.weekend;
+            document.getElementById('contact-form-title').textContent = contentData.contact.form.title;
+            document.getElementById('contact-form-name-label').textContent = contentData.contact.form.name;
+            document.getElementById('contact-form-email-label').textContent = contentData.contact.form.email;
+            document.getElementById('contact-form-phone-label').textContent = contentData.contact.form.phone;
+            document.getElementById('contact-form-company-label').textContent = contentData.contact.form.company;
+            document.getElementById('contact-form-message-label').textContent = contentData.contact.form.message;
+            document.getElementById('contact-form-submit').textContent = contentData.contact.form.submit;
+
+            // Update form placeholders
+            document.getElementById('name').placeholder = contentData.contact.form.placeholders.name;
+            document.getElementById('email').placeholder = contentData.contact.form.placeholders.email;
+            document.getElementById('phone').placeholder = contentData.contact.form.placeholders.phone;
+            document.getElementById('company').placeholder = contentData.contact.form.placeholders.company;
+            document.getElementById('message').placeholder = contentData.contact.form.placeholders.message;
+
+            // Update footer
+            document.getElementById('footer-description').textContent = contentData.footer.description;
+            document.getElementById('footer-services-title').textContent = contentData.footer.services.title;
+            document.getElementById('footer-services-sipen').textContent = contentData.footer.services.sipen;
+            document.getElementById('footer-services-education').textContent = contentData.footer.services.education;
+            document.getElementById('footer-contact-title').textContent = contentData.footer.contact.title;
+            document.getElementById('footer-contact-address').textContent = contentData.footer.contact.address;
+        }
+
+        // Handle form submission
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const contentData = content[currentLanguage];
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+            
+            // 버튼 비활성화 및 로딩 상태 표시
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>전송 중...';
+            
+            try {
+                // 폼 데이터 수집
+                const formData = {
+                    name: document.getElementById('name').value.trim(),
+                    email: document.getElementById('email').value.trim(),
+                    phone: document.getElementById('phone').value.trim(),
+                    company: document.getElementById('company').value.trim(),
+                    message: document.getElementById('message').value.trim(),
+                    language: currentLanguage
+                };
+                
+                // 필수 필드 검증
+                if (!formData.name || !formData.email || !formData.message) {
+                    throw new Error('이름, 이메일, 문의 내용은 필수 입력 항목입니다.');
+                }
+                
+                // 이메일 형식 검증
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(formData.email)) {
+                    throw new Error('올바른 이메일 형식을 입력해주세요.');
+                }
+                
+                // Google Apps Script 웹 앱 URL (실제 배포된 URL로 변경해야 함)
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycby253aD061ABklhBf7gRcii99PHiyjs4hpto171fFuTvgha9IKYWtNGEKtM-tDGiINT/exec';
+                
+                // CORS 문제를 우회하기 위해 동적 폼 생성 방식 사용
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = scriptUrl;
+                form.target = 'hiddenFrame';
+                form.style.display = 'none';
+                
+                // 숨겨진 iframe 생성 (새 탭 대신 사용)
+                let hiddenFrame = document.getElementById('hiddenFrame');
+                if (!hiddenFrame) {
+                    hiddenFrame = document.createElement('iframe');
+                    hiddenFrame.id = 'hiddenFrame';
+                    hiddenFrame.name = 'hiddenFrame';
+                    hiddenFrame.style.display = 'none';
+                    document.body.appendChild(hiddenFrame);
+                }
+                
+                // 데이터를 폼 필드로 추가
+                Object.keys(formData).forEach(key => {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = key;
+                    input.value = formData[key];
+                    form.appendChild(input);
+                });
+                
+                // 폼을 DOM에 추가하고 제출
+                document.body.appendChild(form);
+                form.submit();
+                document.body.removeChild(form);
+                
+                // 성공 메시지 표시
+                alert(contentData.contact.form.successMessage);
+                this.reset();
+                
+            } catch (error) {
+                console.error('Form submission error:', error);
+                alert('오류가 발생했습니다: ' + error.message);
+            } finally {
+                // 버튼 상태 복원
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+            }
+        });
+
+        // Test connection to Google Apps Script
+        async function testConnection() {
+            try {
+                const scriptUrl = 'https://script.google.com/macros/s/AKfycbzpTpbFCivwO13tcFrXVySx5H7zh_ztSnA7NjLDspOHwUcbmvwyGlGF_OoPd_6l3jOGvA/exec';
+                const response = await fetch(scriptUrl, {
+                    method: 'GET',
+                    mode: 'cors'
+                });
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    console.log('Google Apps Script 연결 테스트 성공:', result);
+                } else {
+                    console.error('Google Apps Script 연결 실패:', response.status);
+                }
+            } catch (error) {
+                console.error('Google Apps Script 연결 오류:', error);
+            }
+        }
+
+        // Initialize content on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateContent();
+            // 연결 테스트 (개발 시에만 사용)
+            // testConnection();
+        });
+    </script>
+</body>
+</html>
