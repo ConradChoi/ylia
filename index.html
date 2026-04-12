@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>주식회사 일리아 (YLIA)</title>
-    <meta name="keywords" content="B2B, 공급사 검색 서비스, 시픈, 민간자격과정, 창업, 컨설팅, IT, 트루스앤미, 일리아, ylia, suppliers, 서플라이, 써플라이, 서플라이어, 써플라이어, truthnme">
+    <meta name="keywords"
+        content="B2B, 공급사 검색 서비스, 시픈, 민간자격과정, 창업, 컨설팅, IT, 트루스앤미, 일리아, ylia, suppliers, 서플라이, 써플라이, 서플라이어, 써플라이어, truthnme">
     <link rel="icon" type="image/png" href="image/ylia_favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div id="app" class="min-h-screen">
         <!-- Header -->
@@ -21,14 +24,18 @@
 
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex items-center space-x-6">
-                    <button class="btn-outline cursor-pointer" onclick="scrollToSection('services')" id="nav-sipen">서비스</button>
-                    <button class="btn-outline cursor-pointer" onclick="scrollToSection('about')" id="nav-about">우리는</button>
-                    <button class="btn-outline cursor-pointer" onclick="scrollToSection('contact')" id="nav-contact">문의</button>
+                    <button class="btn-outline cursor-pointer" onclick="scrollToSection('services')"
+                        id="nav-sipen">서비스</button>
+                    <button class="btn-outline cursor-pointer" onclick="scrollToSection('about')"
+                        id="nav-about">우리는</button>
+                    <button class="btn-outline cursor-pointer" onclick="scrollToSection('contact')"
+                        id="nav-contact">문의</button>
                 </nav>
 
                 <!-- Language Toggle & Mobile Menu -->
                 <div class="flex items-center space-x-4">
-                    <select id="language-select" class="form-select hidden sm:block" onchange="changeLanguage(this.value)">
+                    <select id="language-select" class="form-select hidden sm:block"
+                        onchange="changeLanguage(this.value)">
                         <option value="ko">한국어</option>
                         <option value="en">English</option>
                         <option value="zh">中文</option>
@@ -37,8 +44,10 @@
 
                     <!-- Mobile menu button -->
                     <button class="btn-outline md:hidden" onclick="toggleMobileMenu()">
-                        <svg class="icon transition-transform" id="mobile-menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        <svg class="icon transition-transform" id="mobile-menu-icon" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
                         </svg>
                     </button>
                 </div>
@@ -47,10 +56,14 @@
             <!-- Mobile Navigation -->
             <div id="mobile-menu" class="mobile-menu border-t bg-background p-4 md:hidden">
                 <nav class="space-y-2">
-                    <div class="text-sm cursor-pointer hover:text-primary" onclick="scrollToSection('services')" id="mobile-nav-services">서비스</div>
-                    <div class="text-sm cursor-pointer hover:text-primary" onclick="scrollToSection('about')" id="mobile-nav-about">우리는</div>
-                    <div class="text-sm cursor-pointer hover:text-primary" onclick="scrollToSection('contact')" id="mobile-nav-contact">문의</div>
-                    <select id="mobile-language-select" class="form-select w-full sm:hidden" onchange="changeLanguage(this.value)">
+                    <div class="text-sm cursor-pointer hover:text-primary" onclick="scrollToSection('services')"
+                        id="mobile-nav-services">서비스</div>
+                    <div class="text-sm cursor-pointer hover:text-primary" onclick="scrollToSection('about')"
+                        id="mobile-nav-about">우리는</div>
+                    <div class="text-sm cursor-pointer hover:text-primary" onclick="scrollToSection('contact')"
+                        id="mobile-nav-contact">문의</div>
+                    <select id="mobile-language-select" class="form-select w-full sm:hidden"
+                        onchange="changeLanguage(this.value)">
                         <option value="ko">한국어</option>
                         <option value="en">English</option>
                         <option value="zh">中文</option>
@@ -65,7 +78,8 @@
             <section id="hero" class="relative min-h-80vh flex items-center justify-center overflow-hidden">
                 <!-- Background Image -->
                 <div class="absolute inset-0 z-0">
-                    <img src="https://images.unsplash.com/photo-1624213011686-bc14dfc81650?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjBidWlsZGluZyUyMGNvcnBvcmF0ZXxlbnwxfHx8fDE3NTY5MTY3MTJ8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Modern office building" class="w-full h-full object-cover">
+                    <img src="https://images.unsplash.com/photo-1624213011686-bc14dfc81650?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjBidWlsZGluZyUyMGNvcnBvcmF0ZXxlbnwxfHx8fDE3NTY5MTY3MTJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                        alt="Modern office building" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-black/50"></div>
                 </div>
 
@@ -87,7 +101,8 @@
                 <div class="container px-4">
                     <div class="text-center mb-12">
                         <h2 class="text-3xl md:text-4xl font-bold mb-4" id="services-title">우리의 서비스</h2>
-                        <p class="text-lg text-muted-foreground max-w-2xl mx-auto" id="services-subtitle">고객의 성공을 위한 혁신적인 솔루션을 제공합니다</p>
+                        <p class="text-lg text-muted-foreground max-w-2xl mx-auto" id="services-subtitle">고객의 성공을 위한
+                            혁신적인 솔루션을 제공합니다</p>
                     </div>
 
                     <div class="space-y-8 max-w-6xl mx-auto">
@@ -96,14 +111,16 @@
                             <div class="flex flex-col lg:flex-row">
                                 <div class="lg:w-1/2">
                                     <div class="aspect-video relative">
-                                        <img src="https://images.unsplash.com/photo-1709715357520-5e1047a2b691?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHRlYW0lMjBtZWV0aW5nfGVufDF8fHx8MTc1Njk4OTc3Mnww&ixlib=rb-4.1.0&q=80&w=1080" alt="Business team meeting" class="w-full h-full object-cover">
+                                        <img src="https://images.unsplash.com/photo-1709715357520-5e1047a2b691?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHRlYW0lMjBtZWV0aW5nfGVufDF8fHx8MTc1Njk4OTc3Mnww&ixlib=rb-4.1.0&q=80&w=1080"
+                                            alt="Business team meeting" class="w-full h-full object-cover">
                                     </div>
                                 </div>
                                 <div class="lg:w-1/2 flex flex-col">
                                     <div class="p-6 flex-shrink-0">
                                         <div class="flex items-center space-x-3 mb-4">
                                             <div class="p-2 bg-primary/10 rounded-lg">
-                                                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
                                                     <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
                                                     <line x1="8" y1="21" x2="16" y2="21"></line>
                                                     <line x1="12" y1="17" x2="12" y2="21"></line>
@@ -114,7 +131,8 @@
                                         <p class="text-muted-foreground mb-4" id="sipen-description">공급사 검색 서비스 플랫폼</p>
                                     </div>
                                     <div class="px-6 pb-6 flex-grow flex flex-col">
-                                        <ul class="space-y-2 text-sm text-muted-foreground mb-6 flex-grow" id="sipen-features">
+                                        <ul class="space-y-2 text-sm text-muted-foreground mb-6 flex-grow"
+                                            id="sipen-features">
                                             <li class="flex items-center space-x-2">
                                                 <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
                                                 <span>체계적인 공급사 데이터베이스</span>
@@ -133,10 +151,15 @@
                                             </li>
                                         </ul>
                                         <div class="mt-auto">
-                                            <button class="btn-primary w-full sm:w-auto flex items-center" onclick="window.open('https://www.seepn.me', '_blank')">
+                                            <button class="btn-primary w-full sm:w-auto flex items-center"
+                                                onclick="window.open('https://www.seepn.me', '_blank')">
                                                 <span id="sipen-button">서비스 바로가기</span>
-                                                <svg class="icon ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                                <svg class="icon ml-2" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                                    </path>
                                                 </svg>
                                             </button>
                                         </div>
@@ -150,25 +173,34 @@
                             <div class="flex flex-col lg:flex-row">
                                 <div class="lg:w-1/2 lg:order-2">
                                     <div class="aspect-video relative">
-                                        <img src="https://images.unsplash.com/photo-1645363308298-3a949c8bfd86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlZHVjYXRpb24lMjB0ZWNobm9sb2d5JTIwbGVhcm5pbmd8ZW58MXx8fHwxNzU2OTY3NzEzfDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Education technology" class="w-full h-full object-cover">
+                                        <img src="https://images.unsplash.com/photo-1645363308298-3a949c8bfd86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlZHVjYXRpb24lMjB0ZWNobm9sb2d5JTIwbGVhcm5pbmd8ZW58MXx8fHwxNzU2OTY3NzEzfDA&ixlib=rb-4.1.0&q=80&w=1080"
+                                            alt="Education technology" class="w-full h-full object-cover">
                                     </div>
                                 </div>
                                 <div class="lg:w-1/2 lg:order-1 flex flex-col">
                                     <div class="p-6 flex-shrink-0">
                                         <div class="flex items-center space-x-3 mb-4">
                                             <div class="p-2 bg-primary/10 rounded-lg">
-                                                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
                                                     <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
-                                                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                                                    <path
+                                                        d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z">
+                                                    </path>
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z">
+                                                    </path>
                                                 </svg>
                                             </div>
                                             <h3 class="font-semibold text-xl" id="education-title">교육</h3>
                                         </div>
-                                        <p class="text-muted-foreground mb-4" id="education-description">민간자격, 창업/기업가정신, 실무 중심 교육</p>
+                                        <p class="text-muted-foreground mb-4" id="education-description">민간자격, 창업/기업가정신,
+                                            실무 중심 교육</p>
                                     </div>
                                     <div class="px-6 pb-6 flex-grow flex flex-col">
-                                        <ul class="space-y-2 text-sm text-muted-foreground mb-6 flex-grow" id="education-features">
+                                        <ul class="space-y-2 text-sm text-muted-foreground mb-6 flex-grow"
+                                            id="education-features">
                                             <li class="flex items-center space-x-2">
                                                 <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
                                                 <span>민간자격 취득 과정</span>
@@ -187,10 +219,15 @@
                                             </li>
                                         </ul>
                                         <div class="mt-auto">
-                                            <button class="btn-primary w-full sm:w-auto flex items-center" onclick="window.open('https://www.truthnme.com', '_blank')">
+                                            <button class="btn-primary w-full sm:w-auto flex items-center"
+                                                onclick="window.open('https://www.truthnme.com', '_blank')">
                                                 <span id="education-button">서비스 바로가기</span>
-                                                <svg class="icon ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                                <svg class="icon ml-2" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                                    </path>
                                                 </svg>
                                             </button>
                                         </div>
@@ -204,15 +241,20 @@
                             <div class="flex flex-col lg:flex-row">
                                 <div class="lg:w-1/2">
                                     <div class="aspect-video relative">
-                                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="SI/SM service" class="w-full h-full object-cover">
+                                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                                            alt="SI/SM service" class="w-full h-full object-cover">
                                     </div>
                                 </div>
                                 <div class="lg:w-1/2 flex flex-col">
                                     <div class="p-6 flex-shrink-0">
                                         <div class="flex items-center space-x-3 mb-4">
                                             <div class="p-2 bg-primary/10 rounded-lg">
-                                                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                                                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z">
+                                                    </path>
                                                 </svg>
                                             </div>
                                             <h3 class="font-semibold text-xl" id="sism-title">SI/SM</h3>
@@ -220,7 +262,8 @@
                                         <p class="text-muted-foreground mb-4" id="sism-description">시스템 개발 및 유지보수</p>
                                     </div>
                                     <div class="px-6 pb-6 flex-grow flex flex-col">
-                                        <ul class="space-y-2 text-sm text-muted-foreground mb-6 flex-grow" id="sism-features">
+                                        <ul class="space-y-2 text-sm text-muted-foreground mb-6 flex-grow"
+                                            id="sism-features">
                                             <li class="flex items-center space-x-2">
                                                 <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
                                                 <span>IT 시스템 기획·설계</span>
@@ -239,10 +282,15 @@
                                             </li>
                                         </ul>
                                         <div class="mt-auto">
-                                            <button class="btn-primary w-full sm:w-auto flex items-center" onclick="scrollToSection('contact')">
+                                            <button class="btn-primary w-full sm:w-auto flex items-center"
+                                                onclick="scrollToSection('contact')">
                                                 <span id="sism-button">문의하기</span>
-                                                <svg class="icon ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                                <svg class="icon ml-2" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                                    </path>
                                                 </svg>
                                             </button>
                                         </div>
@@ -256,23 +304,30 @@
                             <div class="flex flex-col lg:flex-row">
                                 <div class="lg:w-1/2 lg:order-2">
                                     <div class="aspect-video relative">
-                                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Privacy consulting" class="w-full h-full object-cover">
+                                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                                            alt="Privacy consulting" class="w-full h-full object-cover">
                                     </div>
                                 </div>
                                 <div class="lg:w-1/2 lg:order-1 flex flex-col">
                                     <div class="p-6 flex-shrink-0">
                                         <div class="flex items-center space-x-3 mb-4">
                                             <div class="p-2 bg-primary/10 rounded-lg">
-                                                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                                    </path>
                                                 </svg>
                                             </div>
                                             <h3 class="font-semibold text-xl" id="privacy-title">개인정보 컨설팅</h3>
                                         </div>
-                                        <p class="text-muted-foreground mb-4" id="privacy-description">법규 진단 및 관리체계 구축</p>
+                                        <p class="text-muted-foreground mb-4" id="privacy-description">법규 진단 및 관리체계 구축
+                                        </p>
                                     </div>
                                     <div class="px-6 pb-6 flex-grow flex flex-col">
-                                        <ul class="space-y-2 text-sm text-muted-foreground mb-6 flex-grow" id="privacy-features">
+                                        <ul class="space-y-2 text-sm text-muted-foreground mb-6 flex-grow"
+                                            id="privacy-features">
                                             <li class="flex items-center space-x-2">
                                                 <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
                                                 <span>법규 준수 진단</span>
@@ -287,10 +342,15 @@
                                             </li>
                                         </ul>
                                         <div class="mt-auto">
-                                            <button class="btn-primary w-full sm:w-auto flex items-center" onclick="scrollToSection('contact')">
+                                            <button class="btn-primary w-full sm:w-auto flex items-center"
+                                                onclick="scrollToSection('contact')">
                                                 <span id="privacy-button">문의하기</span>
-                                                <svg class="icon ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                                <svg class="icon ml-2" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                                    </path>
                                                 </svg>
                                             </button>
                                         </div>
@@ -304,15 +364,20 @@
                             <div class="flex flex-col lg:flex-row">
                                 <div class="lg:w-1/2">
                                     <div class="aspect-video relative">
-                                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="AI and automation" class="w-full h-full object-cover">
+                                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+                                            alt="AI and automation" class="w-full h-full object-cover">
                                     </div>
                                 </div>
                                 <div class="lg:w-1/2 flex flex-col">
                                     <div class="p-6 flex-shrink-0">
                                         <div class="flex items-center space-x-3 mb-4">
                                             <div class="p-2 bg-primary/10 rounded-lg">
-                                                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                                <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                                    </path>
                                                 </svg>
                                             </div>
                                             <h3 class="font-semibold text-xl" id="ai-title">AI ̇자동화</h3>
@@ -320,7 +385,8 @@
                                         <p class="text-muted-foreground mb-4" id="ai-description">챗봇·LLM 자동화 솔루션</p>
                                     </div>
                                     <div class="px-6 pb-6 flex-grow flex flex-col">
-                                        <ul class="space-y-2 text-sm text-muted-foreground mb-6 flex-grow" id="ai-features">
+                                        <ul class="space-y-2 text-sm text-muted-foreground mb-6 flex-grow"
+                                            id="ai-features">
                                             <li class="flex items-center space-x-2">
                                                 <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
                                                 <span>챗봇 고객응대 시스템</span>
@@ -339,10 +405,15 @@
                                             </li>
                                         </ul>
                                         <div class="mt-auto">
-                                            <button class="btn-primary w-full sm:w-auto flex items-center" onclick="scrollToSection('contact')">
+                                            <button class="btn-primary w-full sm:w-auto flex items-center"
+                                                onclick="scrollToSection('contact')">
                                                 <span id="ai-button">문의하기</span>
-                                                <svg class="icon ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                                <svg class="icon ml-2" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                                    </path>
                                                 </svg>
                                             </button>
                                         </div>
@@ -359,13 +430,15 @@
                 <div class="container px-4">
                     <div class="text-center mb-12">
                         <h2 class="text-3xl md:text-4xl font-bold mb-4" id="about-title">우리는</h2>
-                        <p class="text-lg text-muted-foreground max-w-3xl mx-auto" id="about-subtitle">혁신과 협력을 통해 더 나은 미래를 만들어가는 기업입니다</p>
+                        <p class="text-lg text-muted-foreground max-w-3xl mx-auto" id="about-subtitle">혁신과 협력을 통해 더 나은
+                            미래를 만들어가는 기업입니다</p>
                     </div>
 
                     <div class="max-w-4xl mx-auto mb-16">
                         <div class="text-center">
                             <p class="text-muted-foreground leading-relaxed" id="about-description">
-                                주식회사 일리아는 2025년 설립된 혁신적인 기술 기업으로, 고객의 성공을 위한 최고의 서비스를 제공하고 있습니다. 우리는 끊임없는 연구개발과 창의적 사고를 바탕으로 시장을 선도하는 솔루션을 개발하며, 고객과 함께 성장하는 파트너가 되고자 합니다.
+                                주식회사 일리아는 2025년 설립된 혁신적인 기술 기업으로, 고객의 성공을 위한 최고의 서비스를 제공하고 있습니다. 우리는 끊임없는 연구개발과 창의적 사고를
+                                바탕으로 시장을 선도하는 솔루션을 개발하며, 고객과 함께 성장하는 파트너가 되고자 합니다.
                             </p>
                         </div>
                     </div>
@@ -374,8 +447,10 @@
                         <!-- Value 1: Innovation -->
                         <div class="card text-center p-6">
                             <div class="space-y-4">
-                                <div class="mx-auto w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                                    <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div
+                                    class="mx-auto w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
                                         <circle cx="12" cy="12" r="10"></circle>
                                         <circle cx="12" cy="12" r="6"></circle>
                                         <circle cx="12" cy="12" r="2"></circle>
@@ -391,8 +466,10 @@
                         <!-- Value 2: Collaboration -->
                         <div class="card text-center p-6">
                             <div class="space-y-4">
-                                <div class="mx-auto w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                                    <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div
+                                    class="mx-auto w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
                                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                                         <circle cx="9" cy="7" r="4"></circle>
                                         <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -409,10 +486,14 @@
                         <!-- Value 3: Excellence -->
                         <div class="card text-center p-6">
                             <div class="space-y-4">
-                                <div class="mx-auto w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                                    <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div
+                                    class="mx-auto w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
                                         <circle cx="12" cy="12" r="3"></circle>
-                                        <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1m15.5-6.5L17 7l-1.5-1.5M7 17l-1.5 1.5M17 17l1.5 1.5M7 7L5.5 5.5"></path>
+                                        <path
+                                            d="M12 1v6m0 6v6m11-7h-6m-6 0H1m15.5-6.5L17 7l-1.5-1.5M7 17l-1.5 1.5M17 17l1.5 1.5M7 7L5.5 5.5">
+                                        </path>
                                     </svg>
                                 </div>
                                 <h3 class="font-semibold" id="value-excellence-title">우수성</h3>
@@ -425,8 +506,10 @@
                         <!-- Value 4: Trust -->
                         <div class="card text-center p-6">
                             <div class="space-y-4">
-                                <div class="mx-auto w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                                    <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <div
+                                    class="mx-auto w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <svg class="h-6 w-6 text-primary" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
                                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                                     </svg>
                                 </div>
@@ -445,7 +528,8 @@
                 <div class="container px-4">
                     <div class="text-center mb-12">
                         <h2 class="text-3xl md:text-4xl font-bold mb-4" id="contact-title">문의</h2>
-                        <p class="text-lg text-muted-foreground max-w-2xl mx-auto" id="contact-subtitle">궁금한 점이 있으시면 언제든 연락주세요. 빠른 시간 내에 답변드리겠습니다.</p>
+                        <p class="text-lg text-muted-foreground max-w-2xl mx-auto" id="contact-subtitle">궁금한 점이 있으시면 언제든
+                            연락주세요. 빠른 시간 내에 답변드리겠습니다.</p>
                     </div>
 
                     <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
@@ -456,8 +540,11 @@
                                 <div class="space-y-4">
                                     <div class="flex items-center space-x-3">
                                         <div class="p-2 bg-primary/10 rounded-lg">
-                                            <svg class="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                            <svg class="h-5 w-5 text-primary" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                                </path>
                                                 <polyline points="22,6 12,13 2,6"></polyline>
                                             </svg>
                                         </div>
@@ -468,8 +555,11 @@
                                     </div>
                                     <div class="flex items-center space-x-3">
                                         <div class="p-2 bg-primary/10 rounded-lg">
-                                            <svg class="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                            <svg class="h-5 w-5 text-primary" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                                </path>
                                             </svg>
                                         </div>
                                         <div>
@@ -479,14 +569,16 @@
                                     </div>
                                     <div class="flex items-center space-x-3">
                                         <div class="p-2 bg-primary/10 rounded-lg">
-                                            <svg class="h-5 w-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <svg class="h-5 w-5 text-primary" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
                                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                                                 <circle cx="12" cy="10" r="3"></circle>
                                             </svg>
                                         </div>
                                         <div>
                                             <p class="font-medium" id="contact-address-label">주소</p>
-                                            <p class="text-muted-foreground" id="contact-address-value">서울시 마포구 신수로 82</p>
+                                            <p class="text-muted-foreground" id="contact-address-value">서울시 마포구 신수로 82
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -510,25 +602,35 @@
                                 <form id="contact-form" class="space-y-4">
                                     <div class="grid md:grid-cols-2 gap-4">
                                         <div class="space-y-2">
-                                            <label for="name" class="font-medium text-sm" id="contact-form-name-label">이름</label>
-                                            <input type="text" id="name" name="name" class="form-input" placeholder="이름">
+                                            <label for="name" class="font-medium text-sm"
+                                                id="contact-form-name-label">이름</label>
+                                            <input type="text" id="name" name="name" class="form-input"
+                                                placeholder="이름">
                                         </div>
                                         <div class="space-y-2">
-                                            <label for="email" class="font-medium text-sm" id="contact-form-email-label">이메일</label>
-                                            <input type="email" id="email" name="email" class="form-input" placeholder="이메일">
+                                            <label for="email" class="font-medium text-sm"
+                                                id="contact-form-email-label">이메일</label>
+                                            <input type="email" id="email" name="email" class="form-input"
+                                                placeholder="이메일">
                                         </div>
                                     </div>
                                     <div class="space-y-2">
-                                        <label for="phone" class="font-medium text-sm" id="contact-form-phone-label">연락처</label>
-                                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="+82-10-1234-5678">
+                                        <label for="phone" class="font-medium text-sm"
+                                            id="contact-form-phone-label">연락처</label>
+                                        <input type="tel" id="phone" name="phone" class="form-input"
+                                            placeholder="+82-10-1234-5678">
                                     </div>
                                     <div class="space-y-2">
-                                        <label for="company" class="font-medium text-sm" id="contact-form-company-label">회사명</label>
-                                        <input type="text" id="company" name="company" class="form-input" placeholder="회사명">
+                                        <label for="company" class="font-medium text-sm"
+                                            id="contact-form-company-label">회사명</label>
+                                        <input type="text" id="company" name="company" class="form-input"
+                                            placeholder="회사명">
                                     </div>
                                     <div class="space-y-2">
-                                        <label for="message" class="font-medium text-sm" id="contact-form-message-label">문의 내용</label>
-                                        <textarea id="message" name="message" rows="5" class="form-textarea" placeholder="문의 내용"></textarea>
+                                        <label for="message" class="font-medium text-sm"
+                                            id="contact-form-message-label">문의 내용</label>
+                                        <textarea id="message" name="message" rows="5" class="form-textarea"
+                                            placeholder="문의 내용"></textarea>
                                     </div>
                                     <button type="submit" class="btn-primary w-full flex items-center justify-center">
                                         <svg class="icon mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -552,7 +654,8 @@
                     <!-- 회사 정보 -->
                     <div class="space-y-4">
                         <div class="flex items-center space-x-2">
-                            <img src="image/ylia_logo.png" alt="YLIA Logo" class="h-8 w-auto object-contain brightness-0 invert opacity-60">
+                            <img src="image/ylia_logo.png" alt="YLIA Logo"
+                                class="h-8 w-auto object-contain brightness-0 invert opacity-60">
                         </div>
                         <p class="text-primary-foreground/80 leading-relaxed" id="footer-description">
                             혁신과 협력을 통해 더 나은 미래를 만들어가는 주식회사 일리아입니다.
@@ -563,11 +666,21 @@
                     <div class="space-y-4">
                         <h3 class="font-semibold" id="footer-services-title">서비스</h3>
                         <ul class="space-y-2 text-sm text-primary-foreground/80">
-                            <li><a href="https://www.seepn.me" target="_blank" class="hover:text-primary-foreground transition-colors" id="footer-services-sipen">시픈</a></li>
-                            <li><a href="https://www.truthnme.com" target="_blank" class="hover:text-primary-foreground transition-colors" id="footer-services-education">교육</a></li>
-                            <li><a href="#" onclick="scrollToSection('service-sism'); return false;" class="hover:text-primary-foreground transition-colors" id="footer-services-sism">SI/SM</a></li>
-                            <li><a href="#" onclick="scrollToSection('service-privacy'); return false;" class="hover:text-primary-foreground transition-colors" id="footer-services-privacy">개인정보 컨설팅</a></li>
-                            <li><a href="#" onclick="scrollToSection('service-ai'); return false;" class="hover:text-primary-foreground transition-colors" id="footer-services-ai">AI/자동화</a></li>
+                            <li><a href="https://www.seepn.me" target="_blank"
+                                    class="hover:text-primary-foreground transition-colors"
+                                    id="footer-services-sipen">시픈</a></li>
+                            <li><a href="https://www.truthnme.com" target="_blank"
+                                    class="hover:text-primary-foreground transition-colors"
+                                    id="footer-services-education">교육</a></li>
+                            <li><a href="#" onclick="scrollToSection('service-sism'); return false;"
+                                    class="hover:text-primary-foreground transition-colors"
+                                    id="footer-services-sism">SI/SM</a></li>
+                            <li><a href="#" onclick="scrollToSection('service-privacy'); return false;"
+                                    class="hover:text-primary-foreground transition-colors"
+                                    id="footer-services-privacy">개인정보 컨설팅</a></li>
+                            <li><a href="#" onclick="scrollToSection('service-ai'); return false;"
+                                    class="hover:text-primary-foreground transition-colors"
+                                    id="footer-services-ai">AI/자동화</a></li>
                         </ul>
                     </div>
 
@@ -575,7 +688,7 @@
                     <div class="space-y-4">
                         <h3 class="font-semibold" id="footer-contact-title">연락처</h3>
                         <div class="space-y-2 text-sm text-primary-foreground/80">
-                            <p>jhc@ylia.io</p>
+                            <p>info@ylia.io</p>
                             <p>+82-10-9025-5093</p>
                             <p id="footer-contact-address">서울시 마포구 신수로 82</p>
                         </div>
@@ -1151,7 +1264,7 @@
         function scrollToSection(sectionId) {
             const element = document.getElementById(sectionId);
             if (element) {
-                element.scrollIntoView({ 
+                element.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
@@ -1167,7 +1280,7 @@
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
             const icon = document.getElementById('mobile-menu-icon');
-            
+
             if (mobileMenu.classList.contains('active')) {
                 mobileMenu.classList.remove('active');
                 icon.style.transform = 'rotate(0deg)';
@@ -1186,11 +1299,11 @@
         // Function to update content based on current language
         function updateContent() {
             const contentData = content[currentLanguage];
-            
+
             // Update language select elements
             document.getElementById('language-select').value = currentLanguage;
             document.getElementById('mobile-language-select').value = currentLanguage;
-            
+
             // Update HTML lang attribute
             document.documentElement.lang = currentLanguage;
 
@@ -1229,7 +1342,7 @@
 
             // Update sipen features
             const sipenFeatures = document.getElementById('sipen-features');
-            sipenFeatures.innerHTML = contentData.services.sipen.features.map(feature => 
+            sipenFeatures.innerHTML = contentData.services.sipen.features.map(feature =>
                 `<li class="flex items-center space-x-2">
                     <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
                     <span>${feature}</span>
@@ -1238,7 +1351,7 @@
 
             // Update education features
             const educationFeatures = document.getElementById('education-features');
-            educationFeatures.innerHTML = contentData.services.education.features.map(feature => 
+            educationFeatures.innerHTML = contentData.services.education.features.map(feature =>
                 `<li class="flex items-center space-x-2">
                     <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
                     <span>${feature}</span>
@@ -1247,7 +1360,7 @@
 
             // Update sism features
             const sismFeatures = document.getElementById('sism-features');
-            sismFeatures.innerHTML = contentData.services.sism.features.map(feature => 
+            sismFeatures.innerHTML = contentData.services.sism.features.map(feature =>
                 `<li class="flex items-center space-x-2">
                     <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
                     <span>${feature}</span>
@@ -1256,7 +1369,7 @@
 
             // Update privacy features
             const privacyFeatures = document.getElementById('privacy-features');
-            privacyFeatures.innerHTML = contentData.services.privacy.features.map(feature => 
+            privacyFeatures.innerHTML = contentData.services.privacy.features.map(feature =>
                 `<li class="flex items-center space-x-2">
                     <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
                     <span>${feature}</span>
@@ -1265,7 +1378,7 @@
 
             // Update ai features
             const aiFeatures = document.getElementById('ai-features');
-            aiFeatures.innerHTML = contentData.services.ai.features.map(feature => 
+            aiFeatures.innerHTML = contentData.services.ai.features.map(feature =>
                 `<li class="flex items-center space-x-2">
                     <div class="w-1.5 h-1.5 bg-primary rounded-full"></div>
                     <span>${feature}</span>
@@ -1324,17 +1437,17 @@
         }
 
         // Handle form submission
-        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+        document.getElementById('contact-form').addEventListener('submit', async function (e) {
             e.preventDefault();
-            
+
             const contentData = content[currentLanguage];
             const submitButton = this.querySelector('button[type="submit"]');
             const originalButtonText = submitButton.innerHTML;
-            
+
             // 버튼 비활성화 및 로딩 상태 표시
             submitButton.disabled = true;
             submitButton.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>전송 중...';
-            
+
             try {
                 // 폼 데이터 수집
                 const formData = {
@@ -1345,28 +1458,28 @@
                     message: document.getElementById('message').value.trim(),
                     language: currentLanguage
                 };
-                
+
                 // 필수 필드 검증
                 if (!formData.name || !formData.email || !formData.message) {
                     throw new Error('이름, 이메일, 문의 내용은 필수 입력 항목입니다.');
                 }
-                
+
                 // 이메일 형식 검증
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!emailRegex.test(formData.email)) {
                     throw new Error('올바른 이메일 형식을 입력해주세요.');
                 }
-                
+
                 // Google Apps Script 웹 앱 URL (실제 배포된 URL로 변경해야 함)
                 const scriptUrl = 'https://script.google.com/macros/s/AKfycby253aD061ABklhBf7gRcii99PHiyjs4hpto171fFuTvgha9IKYWtNGEKtM-tDGiINT/exec';
-                
+
                 // CORS 문제를 우회하기 위해 동적 폼 생성 방식 사용
                 const form = document.createElement('form');
                 form.method = 'POST';
                 form.action = scriptUrl;
                 form.target = 'hiddenFrame';
                 form.style.display = 'none';
-                
+
                 // 숨겨진 iframe 생성 (새 탭 대신 사용)
                 let hiddenFrame = document.getElementById('hiddenFrame');
                 if (!hiddenFrame) {
@@ -1376,7 +1489,7 @@
                     hiddenFrame.style.display = 'none';
                     document.body.appendChild(hiddenFrame);
                 }
-                
+
                 // 데이터를 폼 필드로 추가
                 Object.keys(formData).forEach(key => {
                     const input = document.createElement('input');
@@ -1385,12 +1498,12 @@
                     input.value = formData[key];
                     form.appendChild(input);
                 });
-                
+
                 // 폼을 DOM에 추가하고 제출
                 document.body.appendChild(form);
                 form.submit();
                 document.body.removeChild(form);
-                
+
                 // 성공 메시지 표시
                 alert(contentData.contact.form.successMessage);
                 this.reset();
@@ -1412,7 +1525,7 @@
                     method: 'GET',
                     mode: 'cors'
                 });
-                
+
                 if (response.ok) {
                     const result = await response.json();
                     console.log('Google Apps Script 연결 테스트 성공:', result);
@@ -1425,11 +1538,12 @@
         }
 
         // Initialize content on page load
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             updateContent();
             // 연결 테스트 (개발 시에만 사용)
             // testConnection();
         });
     </script>
 </body>
+
 </html>
