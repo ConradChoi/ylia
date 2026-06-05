@@ -26,11 +26,7 @@ export async function POST(req: NextRequest) {
     }
 
     const endpoint = process.env.GAS_ENDPOINT;
-    console.log("[contact] GAS_ENDPOINT 존재 여부:", !!endpoint);
-    console.log("[contact] GAS_ENDPOINT 앞 30자:", endpoint?.slice(0, 30));
-
     if (!endpoint) {
-      console.error("[contact] GAS_ENDPOINT 환경변수가 설정되지 않았습니다.");
       return NextResponse.json({ success: false, message: "서버 설정 오류입니다." }, { status: 500 });
     }
 
@@ -40,7 +36,6 @@ export async function POST(req: NextRequest) {
       language: "ko",
     };
 
-    console.log("[contact] GAS 호출 시작");
     const gasRes = await fetch(endpoint, {
       method:   "POST",
       redirect: "follow",
@@ -48,15 +43,11 @@ export async function POST(req: NextRequest) {
       body:     JSON.stringify(payload),
     });
 
-    console.log("[contact] GAS 응답 status:", gasRes.status);
     const rawText = await gasRes.text();
-    console.log("[contact] GAS 응답 raw:", rawText.slice(0, 200));
-
     let gasData: { success: boolean; message?: string };
     try {
       gasData = JSON.parse(rawText);
     } catch {
-      console.error("[contact] GAS 응답 JSON 파싱 실패:", rawText.slice(0, 200));
       return NextResponse.json(
         { success: false, message: "전송에 실패했습니다. 잠시 후 다시 시도해주세요." },
         { status: 502 }
@@ -64,7 +55,6 @@ export async function POST(req: NextRequest) {
     }
 
     if (!gasData.success) {
-      console.error("[contact] GAS 오류:", gasData.message);
       return NextResponse.json(
         { success: false, message: "전송에 실패했습니다. 잠시 후 다시 시도해주세요." },
         { status: 502 }
@@ -74,7 +64,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: true, message: "문의가 접수되었습니다." });
 
   } catch (err) {
-    console.error("[contact] 예외 발생:", err);
+    console.error("[contact] 예외:", err);
     return NextResponse.json(
       { success: false, message: "서버 오류가 발생했습니다." },
       { status: 500 }
