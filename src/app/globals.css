@@ -1,26 +1,97 @@
 @import "tailwindcss";
 
+/* ── YLIA 2.0 Design Tokens ── */
 :root {
+  /* Brand */
+  --color-navy:         #0D182F;
+  --color-navy-mid:     #132448;
+
+  /* SEEPN · 기술 서비스 */
+  --color-blue:         #3B82F6;
+  --color-blue-light:   #DCE9FF;
+
+  /* ShapeTest · AI */
+  --color-teal:         #29BCB5;
+  --color-teal-strong:  #1AA5A0;
+  --color-teal-heavy:   #0F8980;
+  --color-teal-light:   #DFF5F4;
+
+  /* 바라미디어 */
+  --color-orange:       #F97316;
+  --color-orange-light: #FEF0E6;
+
+  /* 트루스앤미 */
+  --color-indigo:       #6366F1;
+  --color-indigo-light: #EDEDFD;
+
+  /* Neutral */
+  --color-bg-light:     #F8FAFC;
+  --color-gray-100:     #F1F5F9;
+  --color-gray-300:     #CBD5E3;
+  --color-gray-400:     #94A3B8;
+  --color-gray-500:     #64748B;
+  --color-gray-600:     #475569;
+  --color-text:         #0F172A;
+  --color-border:       #E2E8F0;
+
+  /* Semantic */
+  --color-red:          #EF4444;
+  --color-green:        #22C55E;
+
+  /* Background */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0F172A;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Map to Tailwind utilities */
+  --color-navy:         var(--color-navy);
+  --color-navy-mid:     var(--color-navy-mid);
+  --color-blue:         var(--color-blue);
+  --color-blue-light:   var(--color-blue-light);
+  --color-teal:         var(--color-teal);
+  --color-teal-strong:  var(--color-teal-strong);
+  --color-teal-heavy:   var(--color-teal-heavy);
+  --color-teal-light:   var(--color-teal-light);
+  --color-orange:       var(--color-orange);
+  --color-orange-light: var(--color-orange-light);
+  --color-indigo:       var(--color-indigo);
+  --color-indigo-light: var(--color-indigo-light);
+  --color-bg-light:     var(--color-bg-light);
+  --color-gray-100:     var(--color-gray-100);
+  --color-gray-300:     var(--color-gray-300);
+  --color-gray-400:     var(--color-gray-400);
+  --color-gray-500:     var(--color-gray-500);
+  --color-gray-600:     var(--color-gray-600);
+  --color-text:         var(--color-text);
+  --color-border:       var(--color-border);
+  --color-red:          var(--color-red);
+  --color-green:        var(--color-green);
+
+  --color-background:   var(--background);
+  --color-foreground:   var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Base Styles ── */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scroll anchor offset (sticky header) ── */
+[id] {
+  scroll-margin-top: 72px;
 }
