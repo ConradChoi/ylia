@@ -54,6 +54,7 @@ export interface Translation {
     new_inquiry: string;
     error: string;
     info_labels: { email: string; phone: string; address: string; hours_title: string };
+    address_value: string;
     hours: { weekday: string; weekend: string };
   };
   footer: {
@@ -145,6 +146,7 @@ const ko: Translation = {
     new_inquiry: "새 문의 작성",
     error: "전송에 실패했습니다. 잠시 후 다시 시도해주세요.",
     info_labels: { email: "이메일", phone: "전화번호", address: "주소", hours_title: "운영 시간" },
+    address_value: "경기도 광명시 광명로 841, 2층 1-344호",
     hours: { weekday: "평일 09:00 - 18:00", weekend: "주말 휴무" },
   },
   footer: {
@@ -241,6 +243,7 @@ const en: Translation = {
     new_inquiry: "New Inquiry",
     error: "Failed to send. Please try again later.",
     info_labels: { email: "Email", phone: "Phone", address: "Address", hours_title: "Business Hours" },
+    address_value: "841 Gwangmyeong-ro, 2F 1-344, Gwangmyeong-si, Gyeonggi-do, South Korea",
     hours: { weekday: "Weekdays 09:00 - 18:00", weekend: "Closed on weekends" },
   },
   footer: {
@@ -337,6 +340,7 @@ const zh: Translation = {
     new_inquiry: "新咨询",
     error: "发送失败，请稍后再试。",
     info_labels: { email: "邮箱", phone: "电话", address: "地址", hours_title: "营业时间" },
+    address_value: "京畿道光明市光明路841, 2楼1-344号",
     hours: { weekday: "工作日 09:00 - 18:00", weekend: "周末休息" },
   },
   footer: {
@@ -433,6 +437,7 @@ const ja: Translation = {
     new_inquiry: "新しいお問い合わせ",
     error: "送信に失敗しました。しばらくしてからお試しください。",
     info_labels: { email: "メールアドレス", phone: "電話番号", address: "住所", hours_title: "営業時間" },
+    address_value: "京畿道光明市光明路841, 2階1-344号",
     hours: { weekday: "平日 09:00 - 18:00", weekend: "土日祝休み" },
   },
   footer: {

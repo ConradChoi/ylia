@@ -18,7 +18,7 @@ export default function ContactSection() {
   const CONTACT_ITEMS = [
     { icon: Mail, label: t.contact.info_labels.email, value: CONTACT_INFO.email },
     { icon: Phone, label: t.contact.info_labels.phone, value: CONTACT_INFO.phone },
-    { icon: MapPin, label: t.contact.info_labels.address, value: CONTACT_INFO.address },
+    { icon: MapPin, label: t.contact.info_labels.address, value: t.contact.address_value },
   ];
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
