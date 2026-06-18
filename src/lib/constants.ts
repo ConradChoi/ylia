@@ -41,7 +41,7 @@ export const SERVICE_DIVISIONS: ServiceDivision[] = [
 export const CONTACT_INFO = {
   email: "info@ylia.io",
   phone: "+82-10-9025-5093",
-  address: "서울시 마포구 신수로 82",
+  address: "경기도 광명시 광명로 841, 2층 1-344호",
 };
 
 /* ── Google Apps Script ── */
