@@ -6,6 +6,7 @@ export interface FooterSection {
 }
 
 export interface Translation {
+  meta: { title: string; description: string; ogLocale: string };
   nav: { services: string; about: string; contact: string };
   cta: { inquiry: string };
   hero: {
@@ -65,6 +66,12 @@ export interface Translation {
 }
 
 const ko: Translation = {
+  meta: {
+    title: "주식회사 일리아 — 연결이 삶을 살아있게 합니다",
+    description:
+      "소상공인·개인·기업이 더 잘 살아갈 수 있도록 기술·교육·미디어·출판으로 연결을 만드는 회사입니다.",
+    ogLocale: "ko_KR",
+  },
   nav: { services: "서비스", about: "회사소개", contact: "문의" },
   cta: { inquiry: "문의하기" },
   hero: {
@@ -162,6 +169,12 @@ const ko: Translation = {
 };
 
 const en: Translation = {
+  meta: {
+    title: "YLIA Co., Ltd. — Your Life Is Alive",
+    description:
+      "A company creating connections through technology, education, media, and publishing so small businesses, individuals, and enterprises can live better.",
+    ogLocale: "en_US",
+  },
   nav: { services: "Services", about: "About", contact: "Contact" },
   cta: { inquiry: "Inquire" },
   hero: {
@@ -259,6 +272,12 @@ const en: Translation = {
 };
 
 const zh: Translation = {
+  meta: {
+    title: "YLIA有限公司 — 连接让生活充满活力",
+    description:
+      "一家通过技术、教育、媒体和出版为个体经营者、个人和企业创造连接，让他们生活得更好的公司。",
+    ogLocale: "zh_CN",
+  },
   nav: { services: "服务", about: "关于我们", contact: "联系" },
   cta: { inquiry: "联系我们" },
   hero: {
@@ -356,6 +375,12 @@ const zh: Translation = {
 };
 
 const ja: Translation = {
+  meta: {
+    title: "YLIA株式会社 — つながりが人生を生き生きとさせる",
+    description:
+      "小規模事業者・個人・企業がより良く生きられるよう、技術・教育・メディア・出版でつながりを作る会社です。",
+    ogLocale: "ja_JP",
+  },
   nav: { services: "サービス", about: "会社案内", contact: "お問い合わせ" },
   cta: { inquiry: "お問い合わせ" },
   hero: {

@@ -14,16 +14,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "주식회사 일리아 — 연결이 삶을 살아있게 합니다",
+  title: "YLIA Co., Ltd. — Your Life Is Alive",
   description:
-    "소상공인·개인·기업이 더 잘 살아갈 수 있도록 기술·교육·미디어·출판으로 연결을 만드는 회사입니다.",
+    "A company creating connections through technology, education, media, and publishing so small businesses, individuals, and enterprises can live better.",
   keywords: ["일리아", "YLIA", "SEEPN", "ShapeTest", "바라미디어", "트루스앤미"],
   openGraph: {
-    title: "주식회사 일리아",
-    description: "연결이 삶을 살아있게 합니다 — Your Life Is Alive",
+    title: "YLIA Co., Ltd.",
+    description: "Your Life Is Alive",
     url: "https://ylia.io",
     siteName: "YLIA",
-    locale: "ko_KR",
+    locale: "en_US",
     type: "website",
   },
   robots: { index: true, follow: true },
@@ -36,7 +36,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="ko"
+      lang="en"
       className={`${geistSans.variable} ${geistMono.variable} scroll-smooth antialiased`}
     >
       <body className="bg-white text-[var(--color-text)]">
