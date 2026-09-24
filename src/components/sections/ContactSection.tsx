@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 import { CONTACT_INFO } from "@/lib/constants";
 import { track } from "@/lib/analytics";
@@ -187,10 +186,7 @@ export default function ContactSection() {
                       className="mt-0.5 w-4 h-4 accent-[var(--color-blue)]"
                     />
                     <label htmlFor="consent" className="text-xs text-[var(--color-text)] leading-relaxed cursor-pointer">
-                      {t.contact.consent}{" "}
-                      <Link href="/privacy" target="_blank" className="text-[var(--color-blue)] underline">
-                        {t.footer.privacy}
-                      </Link>
+                      {t.contact.consent}
                     </label>
                   </div>
                 </div>
