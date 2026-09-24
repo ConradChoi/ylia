@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "YLIA Co., Ltd. — Your Life Is Alive",
   description:
     "A company creating connections through technology, education, media, and publishing so small businesses, individuals, and enterprises can live better.",
-  keywords: ["일리아", "YLIA", "SEEPN", "ShapeTest", "바라미디어", "트루스앤미"],
+  keywords: ["일리아", "YLIA", "SEEPN", "FKP", "Find Korean Partners", "ShapeTest", "바라미디어", "트루스앤미"],
   openGraph: {
     title: "YLIA Co., Ltd.",
     description: "Your Life Is Alive",

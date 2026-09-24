@@ -8,8 +8,9 @@ export const SERVICE_DIVISIONS: ServiceDivision[] = [
     badge: "Tech Services",
     description: "",
     services: [
-      { name: "SEEPN  공급사 검색 플랫폼", url: "https://seepn.me" },
       { name: "ShapeTest  AI 도형심리 검사", url: "https://shapetest.app" },
+      { name: "SEEPN  공급사 검색 플랫폼", url: "https://seepn.me" },
+      { name: "FKP  해외 바이어-국내 공급사 연결", url: "https://findkoreanpartners.com" },
     ],
     color: "blue",
   },
@@ -19,8 +20,8 @@ export const SERVICE_DIVISIONS: ServiceDivision[] = [
     badge: "BARA MEDIA",
     description: "",
     services: [
-      { name: "바라 뉴스  온라인 신문·미디어", url: "https://bara-news.kr" },
       { name: "바라 평생교육원  교육·자격·커뮤니티", url: "https://bara-edu.kr" },
+      { name: "바라 뉴스  온라인 신문·미디어", url: "https://bara-news.kr" },
     ],
     color: "orange",
   },
@@ -41,7 +42,23 @@ export const SERVICE_DIVISIONS: ServiceDivision[] = [
 export const CONTACT_INFO = {
   email: "info@ylia.io",
   phone: "+82-10-9025-5093",
-  address: "경기도 광명시 오리로 362 창업지원센터 4층",
+  address: "경기도 광명시 오리로 362 4층",
+};
+
+/* ── 사업자 정보 (한국어 화면은 ko, 그 외 언어는 en) ── */
+export const BUSINESS_REG_NO = "832-86-03446";
+
+export const BUSINESS_INFO = {
+  ko: {
+    company: "주식회사 일리아",
+    ceo: "최종훈",
+    address: "경기도 광명시 오리로 362 4층",
+  },
+  en: {
+    company: "YLIA Co., Ltd.",
+    ceo: "Choi Jonghoon",
+    address: "4F, 362 Ori-ro, Gwangmyeong-si, Gyeonggi-do, Republic of Korea",
+  },
 };
 
 /* ── Google Apps Script ── */

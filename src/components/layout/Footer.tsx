@@ -3,17 +3,28 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useLang } from "@/contexts/LanguageContext";
+import { BUSINESS_INFO, BUSINESS_REG_NO, CONTACT_INFO } from "@/lib/constants";
 
 /* Footer 섹션별 외부 링크 href (번역 불필요) */
 const FOOTER_HREFS: string[][] = [
-  ["https://seepn.me", "https://shapetest.app"],
-  ["https://bara-news.kr", "https://bara-edu.kr"],
+  ["https://shapetest.app", "https://seepn.me", "https://findkoreanpartners.com"],
+  ["https://bara-edu.kr", "https://bara-news.kr"],
   ["https://truthnme.com"],
-  ["#about", "#contact"],
+  ["/#about", "/#contact"],
 ];
 
 export default function Footer() {
-  const { t } = useLang();
+  const { lang, t } = useLang();
+  const biz = lang === "ko" ? BUSINESS_INFO.ko : BUSINESS_INFO.en;
+  const l = t.footer.biz_labels;
+  const BIZ_ITEMS = [
+    [l.company, biz.company],
+    [l.ceo, biz.ceo],
+    [l.reg_no, BUSINESS_REG_NO],
+    [l.address, biz.address],
+    [l.phone, CONTACT_INFO.phone],
+    [l.email, CONTACT_INFO.email],
+  ];
 
   return (
     <footer className="bg-[var(--color-navy)] text-white">
@@ -67,10 +78,22 @@ export default function Footer() {
           </nav>
         </div>
 
+        {/* 사업자 정보 */}
+        <dl className="border-t border-white/10 pt-6 pb-4 flex flex-wrap gap-x-5 gap-y-1 text-xs text-white/40">
+          {BIZ_ITEMS.map(([label, value]) => (
+            <div key={label} className="flex gap-1.5">
+              <dt>{label}</dt>
+              <dd className="text-white/60">{value}</dd>
+            </div>
+          ))}
+        </dl>
+
         {/* 하단 바 */}
-        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-2">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-2">
           <p className="text-xs text-white/30">{t.footer.copyright}</p>
-          <p className="text-xs text-white/30">info@ylia.io</p>
+          <Link href="/privacy" className="text-xs font-semibold text-white/60 hover:text-white/90 transition-colors">
+            {t.footer.privacy}
+          </Link>
         </div>
       </div>
     </footer>

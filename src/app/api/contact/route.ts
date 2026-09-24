@@ -8,6 +8,8 @@ interface ContactPayload {
   message: string;
 }
 
+const LANGUAGES = ["ko", "en", "zh", "ja"];
+
 function validate(data: Partial<ContactPayload>): string | null {
   if (!data.name?.trim())    return "이름을 입력해주세요.";
   if (!data.email?.trim())   return "이메일을 입력해주세요.";
@@ -30,10 +32,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false, message: "서버 설정 오류입니다." }, { status: 500 });
     }
 
-    const { consent: _consent, ...formData } = body;
+    const { consent: _consent, language, ...formData } = body;
     const payload: ContactPayload & { language: string } = {
       ...formData,
-      language: "ko",
+      language: LANGUAGES.includes(language) ? language : "unknown",
     };
 
     const gasRes = await fetch(endpoint, {

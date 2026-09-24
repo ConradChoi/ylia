@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 import { CONTACT_INFO } from "@/lib/constants";
+import { track } from "@/lib/analytics";
 import { useLang } from "@/contexts/LanguageContext";
 import type { ContactForm } from "@/types";
 
@@ -13,7 +15,7 @@ const INITIAL_FORM: ContactForm = {
 export default function ContactSection() {
   const [form, setForm] = useState<ContactForm>(INITIAL_FORM);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const { t } = useLang();
+  const { lang, t } = useLang();
 
   const CONTACT_ITEMS = [
     { icon: Mail, label: t.contact.info_labels.email, value: CONTACT_INFO.email },
@@ -37,10 +39,11 @@ export default function ContactSection() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, language: lang }),
       });
       const data = await res.json();
       if (data.success) {
+        track("generate_lead", { form: "contact", language: lang });
         setStatus("success");
         setForm(INITIAL_FORM);
       } else {
@@ -165,18 +168,31 @@ export default function ContactSection() {
                 </div>
 
                 {/* 개인정보 동의 */}
-                <div className="flex items-start gap-2.5 p-3 bg-[var(--color-bg-light)] rounded-lg">
-                  <input
-                    id="consent"
-                    name="consent"
-                    type="checkbox"
-                    checked={form.consent}
-                    onChange={handleChange}
-                    className="mt-0.5 w-4 h-4 accent-[var(--color-blue)]"
-                  />
-                  <label htmlFor="consent" className="text-xs text-[var(--color-text)] leading-relaxed cursor-pointer">
-                    {t.contact.consent}
-                  </label>
+                <div className="p-3 bg-[var(--color-bg-light)] rounded-lg space-y-2">
+                  <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-[11px] leading-relaxed text-[var(--color-gray-500)]">
+                    {t.contact.consent_notice.map(({ label, value }) => (
+                      <div key={label} className="contents">
+                        <dt className="font-medium text-[var(--color-text)]">{label}</dt>
+                        <dd>{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <div className="flex items-start gap-2.5 pt-1">
+                    <input
+                      id="consent"
+                      name="consent"
+                      type="checkbox"
+                      checked={form.consent}
+                      onChange={handleChange}
+                      className="mt-0.5 w-4 h-4 accent-[var(--color-blue)]"
+                    />
+                    <label htmlFor="consent" className="text-xs text-[var(--color-text)] leading-relaxed cursor-pointer">
+                      {t.contact.consent}{" "}
+                      <Link href="/privacy" target="_blank" className="text-[var(--color-blue)] underline">
+                        {t.footer.privacy}
+                      </Link>
+                    </label>
+                  </div>
                 </div>
 
                 {/* 제출 버튼 */}

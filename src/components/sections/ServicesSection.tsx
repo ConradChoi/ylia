@@ -4,6 +4,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { SERVICE_DIVISIONS } from "@/lib/constants";
 import { useLang } from "@/contexts/LanguageContext";
+import { track } from "@/lib/analytics";
 import type { ServiceDivision } from "@/types";
 
 const COLOR_MAP: Record<ServiceDivision["color"], {
@@ -89,6 +90,7 @@ export default function ServicesSection() {
                       href={division.services[0].url}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => track("outbound_click", { service: division.badge, url: division.services[0].url })}
                       className={cn(
                         "w-full py-2 text-xs font-semibold text-center rounded-lg border transition-colors",
                         colors.btn
@@ -103,9 +105,11 @@ export default function ServicesSection() {
                         href={svc.url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => track("outbound_click", { service: svc.name.split("  ")[0], url: svc.url })}
                         className={cn(
                           "py-2 text-xs font-semibold text-center rounded-lg border transition-colors",
-                          colors.btn
+                          colors.btn,
+                          j === division.services.length - 1 && j % 2 === 0 && "col-span-2"
                         )}
                       >
                         {td.services[j].name.split("  ")[0]} {td.visit}

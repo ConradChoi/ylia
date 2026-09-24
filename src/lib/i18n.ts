@@ -47,6 +47,7 @@ export interface Translation {
       message: { label: string; placeholder: string };
     };
     consent: string;
+    consent_notice: Array<{ label: string; value: string }>;
     consent_alert: string;
     submit: string;
     sending: string;
@@ -62,8 +63,38 @@ export interface Translation {
     tagline: string;
     copyright: string;
     sections: FooterSection[];
+    privacy: string;
+    biz_labels: { company: string; ceo: string; reg_no: string; address: string; phone: string; email: string };
   };
 }
+
+/* 개인정보 수집·이용 고지 (개인정보보호법 제15조 제2항) */
+const CONSENT_NOTICE = {
+  ko: [
+    { label: "수집 목적", value: "문의 접수 및 답변" },
+    { label: "수집 항목", value: "(필수) 이름, 이메일, 문의 내용 / (선택) 연락처, 회사명" },
+    { label: "보유 기간", value: "문의 처리 완료 후 1년간 보관 후 파기" },
+    { label: "동의 거부", value: "동의를 거부할 수 있으며, 거부 시 문의 접수가 제한됩니다." },
+  ],
+  en: [
+    { label: "Purpose", value: "Receiving and responding to your inquiry" },
+    { label: "Items", value: "(Required) name, email, message / (Optional) phone, company" },
+    { label: "Retention", value: "Deleted 1 year after the inquiry is resolved" },
+    { label: "Refusal", value: "You may refuse, but we cannot accept the inquiry without consent." },
+  ],
+  zh: [
+    { label: "收集目的", value: "受理并回复咨询" },
+    { label: "收集项目", value: "（必填）姓名、邮箱、咨询内容 /（选填）电话、公司名称" },
+    { label: "保存期限", value: "咨询处理完毕后保存1年，之后销毁" },
+    { label: "拒绝同意", value: "您可以拒绝同意，但拒绝后将无法受理咨询。" },
+  ],
+  ja: [
+    { label: "収集目的", value: "お問い合わせの受付および回答" },
+    { label: "収集項目", value: "（必須）お名前、メールアドレス、お問い合わせ内容 /（任意）電話番号、会社名" },
+    { label: "保有期間", value: "対応完了後1年間保管し、その後破棄" },
+    { label: "同意の拒否", value: "同意を拒否できますが、その場合お問い合わせを受け付けできません。" },
+  ],
+};
 
 const ko: Translation = {
   meta: {
@@ -75,10 +106,10 @@ const ko: Translation = {
   nav: { services: "서비스", about: "회사소개", contact: "문의" },
   cta: { inquiry: "문의하기" },
   hero: {
-    headline1: "연결이",
-    headline2: "삶을 살아있게 합니다",
+    headline1: "사람을 이해하고,",
+    headline2: "사람을 키웁니다",
     company: "주식회사 일리아",
-    sub: "소상공인·개인·기업이 더 잘 살아갈 수 있도록\n기술·교육·미디어·출판으로 연결을 만드는 회사입니다.",
+    sub: "AI 도형심리 검사와 평생교육으로 사람을 이해하고 성장시키며,\n국내외 공급사 연결로 비즈니스를 돕습니다.\n\nYour Life Is Alive",
     cta_services: "서비스 살펴보기",
     cta_contact: "문의하기",
   },
@@ -98,8 +129,9 @@ const ko: Translation = {
         name: "기술 서비스",
         description: "데이터와 AI로 비즈니스를 연결합니다",
         services: [
-          { name: "SEEPN  공급사 검색 플랫폼" },
           { name: "ShapeTest  AI 도형심리 검사" },
+          { name: "SEEPN  공급사 검색 플랫폼" },
+          { name: "FKP  해외 바이어-국내 공급사 연결" },
         ],
         visit: "방문하기",
       },
@@ -107,8 +139,8 @@ const ko: Translation = {
         name: "바라 미디어",
         description: "지식·정보·교육으로 사람과 세상을 연결합니다",
         services: [
-          { name: "바라 뉴스  온라인 신문·미디어" },
           { name: "바라 평생교육원  교육·자격·커뮤니티" },
+          { name: "바라 뉴스  온라인 신문·미디어" },
         ],
         visit: "방문하기",
       },
@@ -145,6 +177,7 @@ const ko: Translation = {
       message: { label: "문의 내용", placeholder: "문의 내용을 입력해주세요." },
     },
     consent: "문의를 위한 개인정보 수집 및 이용에 동의합니다.",
+    consent_notice: CONSENT_NOTICE.ko,
     consent_alert: "개인정보 수집 및 이용에 동의해주세요.",
     submit: "문의 보내기",
     sending: "전송 중...",
@@ -153,18 +186,20 @@ const ko: Translation = {
     new_inquiry: "새 문의 작성",
     error: "전송에 실패했습니다. 잠시 후 다시 시도해주세요.",
     info_labels: { email: "이메일", phone: "전화번호", address: "주소", hours_title: "운영 시간" },
-    address_value: "경기도 광명시 오리로 362 창업지원센터 4층",
+    address_value: "경기도 광명시 오리로 362 4층",
     hours: { weekday: "평일 09:00 - 18:00", weekend: "주말 휴무" },
   },
   footer: {
     tagline: "연결을 만드는 회사, 주식회사 일리아",
     copyright: "© 2026 주식회사 일리아. All rights reserved.",
     sections: [
-      { title: "기술 서비스", links: ["SEEPN", "ShapeTest"] },
-      { title: "바라 미디어", links: ["바라 뉴스", "바라 평생교육원"] },
+      { title: "기술 서비스", links: ["ShapeTest", "SEEPN", "FKP"] },
+      { title: "바라 미디어", links: ["바라 평생교육원", "바라 뉴스"] },
       { title: "트루스앤미", links: ["출판 서비스"] },
       { title: "회사", links: ["회사소개", "문의하기"] },
     ],
+    privacy: "개인정보처리방침",
+    biz_labels: { company: "상호", ceo: "대표자", reg_no: "사업자등록번호", address: "주소", phone: "연락처", email: "이메일" },
   },
 };
 
@@ -178,10 +213,10 @@ const en: Translation = {
   nav: { services: "Services", about: "About", contact: "Contact" },
   cta: { inquiry: "Inquire" },
   hero: {
-    headline1: "Connection",
-    headline2: "brings life alive",
+    headline1: "Understanding people.",
+    headline2: "Growing people.",
     company: "YLIA Co., Ltd.",
-    sub: "A company that connects small businesses, individuals, and enterprises\nthrough technology, education, media, and publishing.",
+    sub: "AI shape-psychology assessment and lifelong education,\nplus supplier matching that connects businesses in Korea and worldwide.\n\nYour Life Is Alive",
     cta_services: "Explore Services",
     cta_contact: "Contact Us",
   },
@@ -201,8 +236,9 @@ const en: Translation = {
         name: "Tech Services",
         description: "Connecting businesses through data and AI",
         services: [
-          { name: "SEEPN  Supplier Search Platform" },
           { name: "ShapeTest  AI Shape Psychology Test" },
+          { name: "SEEPN  Supplier Search Platform" },
+          { name: "FKP  Connecting Global Buyers with Korean Suppliers" },
         ],
         visit: "Visit",
       },
@@ -210,8 +246,8 @@ const en: Translation = {
         name: "BARA Media",
         description: "Connecting people and the world through knowledge, information, and education",
         services: [
-          { name: "BARA News  Online Newspaper & Media" },
           { name: "BARA Lifelong Education  Education · Certification · Community" },
+          { name: "BARA News  Online Newspaper & Media" },
         ],
         visit: "Visit",
       },
@@ -248,6 +284,7 @@ const en: Translation = {
       message: { label: "Message", placeholder: "Please enter your inquiry." },
     },
     consent: "I agree to the collection and use of personal information for inquiries.",
+    consent_notice: CONSENT_NOTICE.en,
     consent_alert: "Please agree to the collection and use of personal information.",
     submit: "Send Inquiry",
     sending: "Sending...",
@@ -256,24 +293,26 @@ const en: Translation = {
     new_inquiry: "New Inquiry",
     error: "Failed to send. Please try again later.",
     info_labels: { email: "Email", phone: "Phone", address: "Address", hours_title: "Business Hours" },
-    address_value: "362 Ori-ro, Startup Support Center 4F, Gwangmyeong-si, Gyeonggi-do, South Korea",
+    address_value: "4F, 362 Ori-ro, Gwangmyeong-si, Gyeonggi-do, Republic of Korea",
     hours: { weekday: "Weekdays 09:00 - 18:00", weekend: "Closed on weekends" },
   },
   footer: {
     tagline: "A company that creates connections, YLIA Co., Ltd.",
     copyright: "© 2026 YLIA Co., Ltd. All rights reserved.",
     sections: [
-      { title: "Tech Services", links: ["SEEPN", "ShapeTest"] },
-      { title: "BARA Media", links: ["BARA News", "BARA Lifelong Education"] },
+      { title: "Tech Services", links: ["ShapeTest", "SEEPN", "FKP"] },
+      { title: "BARA Media", links: ["BARA Lifelong Education", "BARA News"] },
       { title: "TRUTHNME", links: ["Publishing Services"] },
       { title: "Company", links: ["About", "Contact"] },
     ],
+    privacy: "Privacy Policy",
+    biz_labels: { company: "Company", ceo: "CEO", reg_no: "Business Reg. No.", address: "Address", phone: "Phone", email: "Email" },
   },
 };
 
 const zh: Translation = {
   meta: {
-    title: "YLIA有限公司 — 连接让生活充满活力",
+    title: "YLIA Co., Ltd. — 连接让生活充满活力",
     description:
       "一家通过技术、教育、媒体和出版为个体经营者、个人和企业创造连接，让他们生活得更好的公司。",
     ogLocale: "zh_CN",
@@ -281,10 +320,10 @@ const zh: Translation = {
   nav: { services: "服务", about: "关于我们", contact: "联系" },
   cta: { inquiry: "联系我们" },
   hero: {
-    headline1: "连接",
-    headline2: "让生活充满生机",
-    company: "一利亚株式会社",
-    sub: "帮助中小企业、个人与大企业更好地生活，\n通过技术、教育、媒体与出版建立连接。",
+    headline1: "理解人，",
+    headline2: "成就人。",
+    company: "YLIA Co., Ltd.",
+    sub: "以AI图形心理测试与终身教育理解人、成就人，\n并通过连接韩国与海外的供应商对接服务助力企业发展。\n\nYour Life Is Alive",
     cta_services: "探索服务",
     cta_contact: "联系我们",
   },
@@ -304,8 +343,9 @@ const zh: Translation = {
         name: "技术服务",
         description: "通过数据与AI连接商业",
         services: [
-          { name: "SEEPN  供应商搜索平台" },
           { name: "ShapeTest  AI图形心理测试" },
+          { name: "SEEPN  供应商搜索平台" },
+          { name: "FKP  连接海外买家与韩国供应商" },
         ],
         visit: "访问",
       },
@@ -313,8 +353,8 @@ const zh: Translation = {
         name: "BARA媒体",
         description: "通过知识、信息与教育连接人与世界",
         services: [
-          { name: "BARA新闻  在线报纸与媒体" },
           { name: "BARA终身教育院  教育·资格·社区" },
+          { name: "BARA新闻  在线报纸与媒体" },
         ],
         visit: "访问",
       },
@@ -351,6 +391,7 @@ const zh: Translation = {
       message: { label: "咨询内容", placeholder: "请输入您的咨询内容。" },
     },
     consent: "我同意为咨询目的收集和使用个人信息。",
+    consent_notice: CONSENT_NOTICE.zh,
     consent_alert: "请同意收集和使用个人信息。",
     submit: "发送咨询",
     sending: "发送中...",
@@ -359,24 +400,26 @@ const zh: Translation = {
     new_inquiry: "新咨询",
     error: "发送失败，请稍后再试。",
     info_labels: { email: "邮箱", phone: "电话", address: "地址", hours_title: "营业时间" },
-    address_value: "京畿道光明市梧里路362, 创业支援中心4楼",
+    address_value: "京畿道光明市梧里路362, 4楼",
     hours: { weekday: "工作日 09:00 - 18:00", weekend: "周末休息" },
   },
   footer: {
-    tagline: "创造连接的公司，一利亚株式会社",
-    copyright: "© 2026 一利亚株式会社. All rights reserved.",
+    tagline: "创造连接的公司，YLIA Co., Ltd.",
+    copyright: "© 2026 YLIA Co., Ltd. All rights reserved.",
     sections: [
-      { title: "技术服务", links: ["SEEPN", "ShapeTest"] },
-      { title: "BARA媒体", links: ["BARA新闻", "BARA终身教育院"] },
+      { title: "技术服务", links: ["ShapeTest", "SEEPN", "FKP"] },
+      { title: "BARA媒体", links: ["BARA终身教育院", "BARA新闻"] },
       { title: "TRUTHNME", links: ["出版服务"] },
       { title: "公司", links: ["关于我们", "联系我们"] },
     ],
+    privacy: "隐私政策",
+    biz_labels: { company: "公司名称", ceo: "代表", reg_no: "营业执照号", address: "地址", phone: "电话", email: "邮箱" },
   },
 };
 
 const ja: Translation = {
   meta: {
-    title: "YLIA株式会社 — つながりが人生を生き生きとさせる",
+    title: "YLIA Co., Ltd. — つながりが人生を生き生きとさせる",
     description:
       "小規模事業者・個人・企業がより良く生きられるよう、技術・教育・メディア・出版でつながりを作る会社です。",
     ogLocale: "ja_JP",
@@ -384,10 +427,10 @@ const ja: Translation = {
   nav: { services: "サービス", about: "会社案内", contact: "お問い合わせ" },
   cta: { inquiry: "お問い合わせ" },
   hero: {
-    headline1: "つながりが",
-    headline2: "生きることを輝かせる",
-    company: "株式会社イリア",
-    sub: "中小企業・個人・企業がより豊かに生きられるよう、\n技術・教育・メディア・出版でつながりを創る会社です。",
+    headline1: "人を理解し、",
+    headline2: "人を育てる。",
+    company: "YLIA Co., Ltd.",
+    sub: "AI図形心理検査と生涯教育で人を理解し成長を支え、\n国内外のサプライヤーマッチングでビジネスを後押しします。\n\nYour Life Is Alive",
     cta_services: "サービスを見る",
     cta_contact: "お問い合わせ",
   },
@@ -407,8 +450,9 @@ const ja: Translation = {
         name: "テクノロジーサービス",
         description: "データとAIでビジネスをつなぎます",
         services: [
-          { name: "SEEPN  サプライヤー検索プラットフォーム" },
           { name: "ShapeTest  AI図形心理検査" },
+          { name: "SEEPN  サプライヤー検索プラットフォーム" },
+          { name: "FKP  海外バイヤーと韓国サプライヤーをつなぐ" },
         ],
         visit: "サイトへ",
       },
@@ -416,8 +460,8 @@ const ja: Translation = {
         name: "BARAメディア",
         description: "知識・情報・教育で人と世界をつなぎます",
         services: [
-          { name: "BARA ニュース  オンライン新聞・メディア" },
           { name: "BARA 生涯学習院  教育・資格・コミュニティ" },
+          { name: "BARA ニュース  オンライン新聞・メディア" },
         ],
         visit: "サイトへ",
       },
@@ -454,6 +498,7 @@ const ja: Translation = {
       message: { label: "お問い合わせ内容", placeholder: "お問い合わせ内容をご入力ください。" },
     },
     consent: "お問い合わせのための個人情報収集・利用に同意します。",
+    consent_notice: CONSENT_NOTICE.ja,
     consent_alert: "個人情報収集・利用への同意が必要です。",
     submit: "送信する",
     sending: "送信中...",
@@ -462,18 +507,20 @@ const ja: Translation = {
     new_inquiry: "新しいお問い合わせ",
     error: "送信に失敗しました。しばらくしてからお試しください。",
     info_labels: { email: "メールアドレス", phone: "電話番号", address: "住所", hours_title: "営業時間" },
-    address_value: "京畿道光明市梧里路362, 創業支援センター4階",
+    address_value: "京畿道光明市梧里路362, 4階",
     hours: { weekday: "平日 09:00 - 18:00", weekend: "土日祝休み" },
   },
   footer: {
-    tagline: "つながりを創る会社、株式会社イリア",
-    copyright: "© 2026 株式会社イリア. All rights reserved.",
+    tagline: "つながりを創る会社、YLIA Co., Ltd.",
+    copyright: "© 2026 YLIA Co., Ltd. All rights reserved.",
     sections: [
-      { title: "テクノロジーサービス", links: ["SEEPN", "ShapeTest"] },
-      { title: "BARAメディア", links: ["BARAニュース", "BARA生涯学習院"] },
+      { title: "テクノロジーサービス", links: ["ShapeTest", "SEEPN", "FKP"] },
+      { title: "BARAメディア", links: ["BARA生涯学習院", "BARAニュース"] },
       { title: "TRUTHNME", links: ["出版サービス"] },
       { title: "会社", links: ["会社案内", "お問い合わせ"] },
     ],
+    privacy: "プライバシーポリシー",
+    biz_labels: { company: "商号", ceo: "代表者", reg_no: "事業者登録番号", address: "所在地", phone: "電話番号", email: "メール" },
   },
 };
 
